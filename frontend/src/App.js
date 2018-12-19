@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Routes from './Routes';
+import {Link} from 'react-router-dom'
+import {logout} from './components/services/auth'
 
 class App extends Component {
+  logout=(e)=>{
+    e.preventDefault()
+    const {user} = this.state
+    logout(user)
+        .then(r=>{
+            localStorage.removeItem('loggedUser')
+            this.props.history.push('/home')
+            
+        }).catch(e=>{
+            console.log(e)
+        })
+
+}
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <nav>
+          <Link to ="/auth/login">Login</Link>
+          <Link to="/auth/signup">Signup</Link>
+          <Link to="/" onClick={logout} >Logout</Link>
+          <Link to="/profile">Profile</Link>
+          <Link to="/auth/elogin">staff login</Link>
+        </nav>
+        <Routes />
       </div>
     );
   }

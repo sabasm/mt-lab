@@ -6,11 +6,13 @@ import Profile from './components/users/Profile'
 import dashboard from './components/admin/dashboard/dashboard';
 import StaffLogin from './components/admin/auth/StaffLogin';
 import StaffSignup from './components/admin/auth/StaffSignup'
+import Conekta from './components/services/conekta/conekta';
 
 
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={ Home }/>
+    <Route exact path="/deposit" component={Conekta}/>
     <Route exact path="/auth/e/signup" component={StaffSignup}/>
     <Route exact path="/auth/e/login" component={StaffLogin}/>
     <Route exact path="/auth/e/dashboard" component={dashboard}/>

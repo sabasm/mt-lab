@@ -11,8 +11,8 @@ class App extends Component {
     script.src = 'https://cdn.conekta.io/js/latest/conekta.js'
     script.async = true
     document.body.appendChild(script)
+    
   }
-  
   logout=(e)=>{
     e.preventDefault()
     const {user} = this.state

@@ -18,6 +18,7 @@ const Routes = () => (
     <Route exact path="/auth/e/dashboard" component={dashboard}/>
     <Route exact path="/auth/signup" component={AuthPage}/>
     <Route exact path="/auth/login" component={AuthPage}/>
+    <Route exact path="/profile/edit" component={Profile}/>
     <Route exact path="/profile" component={Profile}/>
   </Switch>
 )

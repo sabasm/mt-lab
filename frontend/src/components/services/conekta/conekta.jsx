@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import CardForm from "./cardForm";
 import axios from "axios";
-
 class Conekta extends Component {
   state = {
     card: {}
@@ -38,10 +37,14 @@ class Conekta extends Component {
     var conektaSuccessResponseHandler = function(token) {
       // Do something on sucess
       // you need to send the token to the backend.
-      const host = "http://localhost:3000/pay";
-      return axios
-        .post(host + "/card", token)
-        .then(r => r.data)
+      const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (!loggedUser) this.props.history.push("/login");
+      axios
+        .post("http://localhost:3000/pay/card", { token,loggedUser })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+        })
         .catch(e => e.response);
     };
 
@@ -60,9 +63,11 @@ class Conekta extends Component {
     const field = e.target.name;
     card[field] = e.target.value;
     this.setState({ card });
-    console.log({ ...card });
   };
+
   render() {
+    const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    if (!loggedUser) this.props.history.push("/auth/login");
     return (
       <div>
         <CardForm validate={this.validate} handleText={this.handleText} />

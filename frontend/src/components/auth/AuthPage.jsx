@@ -27,7 +27,7 @@ class AuthPage extends Component {
         login(user)
             .then(r=>{
                 localStorage.setItem('loggedUser',JSON.stringify(r))
-                console.log('logged',r)
+                //console.log('logged',r)
                 this.props.history.push('/profile')
                 
             }).catch(e=>{
@@ -35,6 +35,7 @@ class AuthPage extends Component {
             })
 
     }
+    
 
     handleText=(e)=>{
         const {user} = this.state

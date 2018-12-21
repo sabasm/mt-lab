@@ -12,16 +12,20 @@ const isAuth = (req, res, next) => {
 }
 
 //CARD PAYMENTS
-router.post('/card', (req, res, next) => {
-  console.log(req.data,res.data)
+router.post('/card', (req,res,next)=> {
+  token_id = req.body.token.id
+  name = req.body.loggedUser.personalData.name
+  email = req.body.loggedUser.email
+  phone = req.body.loggedUser.personalData.phone.number
+  userid=req.body.loggedUser._id
   customer = conekta.Customer.create({
-    'name': 'Fulanito Pérez',
-    'email': 'fulanito@conekta.com',
-    'phone': '+52181818181',
+    name,
+    email,
+    phone,
+    custom_id:userid,
     'payment_sources': [{
       'type': 'card',
-      'token_id': token.id
-    }]
+      token_id}]
   }, function(err, res) {
       if(err){
         console.log(err);
@@ -29,7 +33,6 @@ router.post('/card', (req, res, next) => {
       }
       console.log(res.toObject());
   });
-
   order = conekta.Order.create({
     "line_items": [{
         "name": "Tacos",
@@ -42,7 +45,7 @@ router.post('/card', (req, res, next) => {
     }], //shipping_lines - physical goods only
     "currency": "MXN",
     "customer_info": {
-     "customer_id": "cus_2fkJPFjQKABcmiZWz"
+     "customer_id": "cus_2jpMvNooSutHhBy9q"
     },
     "shipping_contact":{
      "address": {
@@ -65,8 +68,22 @@ router.post('/card', (req, res, next) => {
       return;
     }
     console.log(res.toObject());
+    console.log("ID: " + order.id);
+console.log("Status: " + order.payment_status);
+console.log("$" + (order.amount/100) + order.currency);
+console.log("Order");
+console.log(order.line_items[0].quantity + " - "
+            + order.line_items[0].name + " - "
+            + (order.line_items[0].unit_price/100));
+console.log("Payment info");
+console.log("Code: " + order.charges[0].payment_method.auth_code);
+console.log("Card info: "
+              + order.charges[0].payment_method.name + " - "
+              + order.charges[0].payment_method.last4 + " - "
+              + order.charges[0].payment_method.brand + " - "
+              + order.charges[0].payment_method.type);
 });
-
 })
+
 
 module.exports = router

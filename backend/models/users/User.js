@@ -31,7 +31,7 @@ const userSchema = new Schema({
       type: String
     },
     phone: {
-      number: Number,
+      number: String,
       verified: {
         type: Boolean,
         default: false

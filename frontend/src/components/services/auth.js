@@ -20,6 +20,7 @@ export const login = (user) =>{
 
 //logout
 export const logout =() =>{
+    localStorage.clear();
     return axios.get(host+'/logout', {withCredentials:true})
     .then(r=>r.data)
     .catch(e=>e.response)
@@ -37,6 +38,13 @@ export const getProfile = () =>{
             
         })
 } 
+
+//update profile edit
+export const update = (user) =>{
+    return axios.post(host+'/profile/edit',user,{withCredentials:true})
+        .then(r=>r.data)
+        .catch(e=>e.response)
+}
 
 
 //staff signup

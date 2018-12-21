@@ -16,13 +16,14 @@ router.post('/signup', (req, res, next) => {
   User.register(req.body, req.body.password)
     .then(user => {
       Client.create({
-         email: user._id
-       })
-       
-  res.status(201).json(user)})
-.catch(e => {
-  res.status(500).json(e)
-})
+        email: user._id
+      })
+
+      res.status(201).json(user)
+    })
+    .catch(e => {
+      res.status(500).json(e)
+    })
 })
 //login
 router.post('/login', (req, res, next) => {
@@ -47,6 +48,37 @@ router.get('/logout', (req, res, next) => {
 //profile
 router.get('/profile', isAuth, (req, res, next) => {
   return res.status(201).json(req.user)
+})
+
+//profile/edit
+router.post('/profile/edit', (req, res, next) => {
+  console.log("user ",req.user._id)
+  console.log(req.body.name)
+  console.log(req.body.phone)
+  console.log(req.body.city)
+  console.log(req.body.imgURL)
+  console.log(req.body.birthday)
+
+  let _id = req.user._id
+  console.log(_id)
+  let name = req.body.name
+  let phone = {number:req.body.phone}
+  let city = req.body.city
+  let imgURL = req.body.imgURL
+  let birthday = req.body.birthday
+  var personalData= {
+    imgURL,
+    phone,
+    name,
+    city,
+    birthday
+  }
+
+
+  console.log(personalData)
+  User.findByIdAndUpdate(_id, {personalData})
+  .then(e=>console.log(e))
+  .catch(e=>console.log(e))
 })
 
 module.exports = router

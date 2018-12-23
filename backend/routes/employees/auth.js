@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const User = require('../../models/users/User')
-const Staff = require('../../models/users/Staff');
 const passport = require('../../helpers/passport')
 
 //Middleware check

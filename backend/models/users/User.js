@@ -14,6 +14,7 @@ const userSchema = new Schema({
     minlength: 6,
     maxlength: 12,
   },
+  documents: [String],
   email: {
       type: String,
       unique: true,
@@ -42,6 +43,36 @@ const userSchema = new Schema({
     age: Number,
     birthday: Date
   },
+  costumer:{
+    status: {
+      tax: {
+        type: Number,
+        default: 20
+      },
+      maxAmount: {
+        type: Number,
+        default: 1000
+      },
+      grantedAmount: {
+        type: Number,
+        default: 0
+      },
+      paymentsLeft: {
+        type: Number
+      },
+      paymentsType: {
+        type: String,
+        enum: ['weekly', 'biweekly', 'monthly'],
+        default: 'monthly'
+      },
+      paymentsDates: [Date],
+      conektaCostumerId: String
+    },
+    social: {
+      invites: [String]
+    }
+
+  }
 }, {
   timestamps: {
     createdAt: true,
@@ -52,5 +83,20 @@ const userSchema = new Schema({
 userSchema.plugin(passport, {
   emailField: 'email'
 })
+
+userSchema.methods.staff = function(){
+  this.client=false
+  this.staff={
+    documents: [String],
+    corpemail:String,
+    position:String,
+    access:{
+      type: Number,
+      enum: [5,4,3,2,1],
+      default: 1
+    },
+    pin:{type:Number, minlength:7, maxlength:10,default:1234567890}
+  }
+}
 
 module.exports = mongoose.model('User', userSchema)

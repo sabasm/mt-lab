@@ -2,19 +2,21 @@ import React from 'react'
 
 const LoginForm = ({login, handleText}) => {
   return (
-    <div>
-      Login
+    <div className="all-forms">
+      <label>Iniciar sesión:
+          <hr/>
       <form method="POST" onSubmit={login}>
-        <p>
-            Usuario:
+        <label>
+            Usuario:<br/>
             <input type="text" name="username" onChange={handleText}/>
-        </p>
-        <p>
-            Password:
+        </label><br/><br/>
+        <label>
+            Password:<br/>
             <input type="password" name="password" onChange={handleText}/>
-        </p>
+        </label><br/><br/>
         <button type="submit">Log in</button>
       </form>
+      </label>
     </div>
   )
 }

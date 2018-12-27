@@ -69,7 +69,7 @@ class Conekta extends Component {
     const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     if (!loggedUser) this.props.history.push("/auth/login");
     return (
-      <div>
+      <div className="landing-front">
         <CardForm validate={this.validate} handleText={this.handleText} />
       </div>
     );

@@ -64,10 +64,10 @@ const userSchema = new Schema({
         type: String,
         enum: ['weekly', 'biweekly', 'monthly'],
         default: 'monthly'
-      },
-      paymentsDates: [Date],
-      conektaCostumerId: String
+      }
     },
+    paymentsDates: [Date],
+    conektaCostumerId: String,
     social: {
       invites: [String]
     }
@@ -98,5 +98,6 @@ userSchema.methods.staff = function(){
     pin:{type:Number, minlength:7, maxlength:10,default:1234567890}
   }
 }
+
 
 module.exports = mongoose.model('User', userSchema)

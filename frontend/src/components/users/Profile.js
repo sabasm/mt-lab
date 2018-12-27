@@ -39,11 +39,11 @@ import EditProfile from './editProfile';
 
   render() {
       const loggedUser = JSON.parse(localStorage.getItem('loggedUser'))
-      if(!loggedUser) this.props.history.push('/login')
+      if(!loggedUser) this.props.history.push('/')
      // const {path} = this.props.location
   
     return (
-      <div>
+      <div className="landing-front">
          {/* {path==='/profile/edit'?
             <EditProfile
                 updateProfile={this.updateProfile}

@@ -5,7 +5,7 @@ const MyProfile = () =>{
       <div className="profiles-container">
         <div className="profiles-container-cover">
             <img id="coverpicture" src="" alt="cover"/>
-            <img id="profilepicture" src="" alt="profile picture"/>
+            <img id="profilepicture" src="" alt="profile-pic"/>
         </div>
         <h2>nombre</h2>
         <hr/>

@@ -2,27 +2,29 @@ import React from 'react'
 
 const SignupForm = ({signup, handleText}) => {
   return (
-    <div>
-      Signup
+    <div className="all-forms ">
+    <label>Registro:
+      <hr/>
       <form method="POST" onSubmit={signup}>
-        <p>
-            Usuario:
+        <label>
+            Usuario:<br/>
             <input type="text" name="username" onChange={handleText}/>
-        </p>
-        <p>
-            Nombre:
+        </label><br/><br/>
+        <label>
+            Nombre:<br/>
             <input type="text" name="personalData.name" onChange={handleText}/>
-        </p>
-        <p>
-            Email:
+        </label><br/><br/>
+        <label>
+            Email:<br/>
             <input type="email" name="email" onChange={handleText}/>
-        </p>
-        <p>
-            Password:
+        </label><br/><br/>
+        <label>
+            Password:<br/>
             <input type="password" name="password"  onChange={handleText}/>
-        </p>
+        </label><br/><br/>
         <button type="submit">Registrate</button>
       </form>
+      </label>
     </div>
   )
 }

@@ -2,38 +2,42 @@ import React from 'react'
 
 const CardForm = ({validate, handleText}) => {
   return (
-    <div>
-      CardForm
+    <div className="all-forms">
+      <label>Ingresa tus datos bancarios:
+          <hr/>
       <form method="POST" onSubmit={validate}>
-      <p>
-            Nombre registrado en tarjeta:
+      <label>
+            Nombre en tarjeta:<br/>
             <input type="text" name="name" onChange={handleText}/>
-        </p>
-        <p>
-            Numero de tarjeta:
+        </label><br/><br/>
+        <label>
+            16 digitos de tarjeta:<br/>
             <input type="number" name="number" onChange={handleText}/>
-        </p>
-        <p>
-            Fecha de caducidad:
-            <label>Mes:<input type="number" name="exp_month" placeholder="01" onChange={handleText}/></label>
-            <label>Año: 20<input type="number" name="exp_year" placeholder="01" onChange={handleText}/></label>
-        </p>
-        <p>
-            CVC:
+        </label><br/><br/>
+        <label>
+            Fecha de caducidad:<br/>
+            mes/año (MM/AA):<br/>
+            <section id="año-mes">
+            <input type="number" name="exp_month" placeholder="02" onChange={handleText}/>/<input type="number" name="exp_year" placeholder="20" onChange={handleText}/>
+            </section>
+        </label><br/>
+        <label>
+            cvc:<br/>
             <input type="number" name="cvc" placeholder="123" onChange={handleText}/>
-        </p>
-        <p>
-            Dirección:
-            <input type="text" name="street1" placeholder="Calle Constituyentes 301" onChange={handleText}/>
+        </label><br/><br/>
+        <label>
+            Dirección:<br/>
+            <input type="text" name="street1" placeholder="Calle Constituyentes #301" onChange={handleText}/>
             <input type="text" name="street2" placeholder="Col. Misión del Real" onChange={handleText}/>
             <input type="text" name="city" placeholder="Hermosillo" onChange={handleText}/>
             <input type="text" name="state" placeholder="Sonora" onChange={handleText}/>
             <input type="number" name="zip" placeholder="83100" onChange={handleText}/>
             <input hidden type="number" name="country" placeholder="México" onChange={handleText}/>
         
-        </p>
+        </label><br/><br/>
         <button type="submit">Enviar</button>
       </form>
+      </label>
     </div>
   )
 }

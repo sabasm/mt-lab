@@ -47,8 +47,8 @@ class AuthPage extends Component {
   render() {
       const {pathname} = this.props.location
     return (
-      <div>
-        <div>
+        <div className="component-container">
+        <div className="landing-front">
             {pathname==='/auth/login'?
             <LoginForm
                 login={this.login}

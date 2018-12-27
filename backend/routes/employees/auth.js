@@ -11,20 +11,17 @@ const isAuth = (req, res, next) => {
 }
 
 //Signup
-router.post('/signup', (req, res, next) => {
+router.post('/e/signup', (req, res, next) => {
   User.register(req.body, req.body.password)
     .then(user => {
-      Staff.create({
-         email: user._id
-       })
-       
+      User.staff()
   res.status(201).json(user)})
 .catch(e => {
   res.status(500).json(e)
 })
 })
 //login
-router.post('/login', (req, res, next) => {
+router.post('/e/login', (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) return res.status(500).json(info)
     if (!user) return res.status(404).json(info)

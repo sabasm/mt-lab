@@ -1,3 +1,6 @@
+*{
+  font-family: 'Raleway', sans-serif;
+}
 .App {
   text-align: center;
 }
@@ -47,30 +50,79 @@
   height: 20vh;
   padding: 2rem;
 }
-.landing-info-invest,.landing-front{
+.landing-front{
+  align-content: center;
+  box-sizing: content-box;
+  padding-top: 4rem;
+  background-color: bisque;
+
+}
+.landing-info-invest{
   align-content: center;
   box-sizing: content-box;
   padding-top: 4rem;
   padding-bottom: 2rem;
   background-color: bisque;
-
-}
-.landing-info-invest{
 padding-left: 4rem;
 padding-right:4rem;
 }
 
-.component-container{
-  padding-top: 2rem;
-  padding-bottom: 4rem;
-  background-color: white;
-}
 .landing-front{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  width: 100vw;
+  height: 89vh;
+
+}
+#año-mes input{
+  width: 3rem;
+}
+#año-mes{
+  display: flex;
+  justify-content: center;
+}
+
+.all-forms{
+  background-color:white;
+  max-width:15vw;
+  height:auto;
+  padding:4rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-flow: column wrap;
-  width: 100vw;
-  height: 89vh;
+}
 
+.nav-selected{
+  font-weight:bold;
+}
+
+.nav-inactive{
+    color: #fff;
+    text-decoration: none;
+}
+.nav-inactive:hover{
+  color: gray;
+  text-decoration: none;
+}
+.nav-bar-links-container{
+  width:40%;
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.nav-bar{
+  background-color: black;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items:center;
+  box-sizing: content-box; 
+  padding-left: 2rem;
+  padding-right: 2rem;
+  height: auto;
+  min-height:3rem;
 }

@@ -84,18 +84,19 @@ userSchema.plugin(passport, {
   emailField: 'email'
 })
 
-userSchema.methods.staff = function(){
+userSchema.methods.createStaff = function(){
   this.client=false
   this.staff={
     documents: [String],
-    corpemail:String,
+    mail:String,
     position:String,
     access:{
       type: Number,
       enum: [5,4,3,2,1],
       default: 1
     },
-    pin:{type:Number, minlength:7, maxlength:10,default:1234567890}
+    pin:{type:Number, minlength:7, maxlength:10,default:1234567890},
+    convertedBy:String
   }
 }
 

@@ -73,13 +73,12 @@ mongoose
   
   // default value for title local
   app.locals.title = 'MT-Lab';
-  
+  const searchfor = require('./helpers/searchFor')
   const pay = require('./helpers/payments')
-  const eauth = require ('./routes/employees/auth')
   const auth = require ('./routes/auth/auth')
   const index = require('./routes/index');
+  app.use('/searchfor',searchfor)
   app.use('/pay',pay)
-  app.use('/auth/e/',eauth)
   app.use('/auth',auth)
   app.use('/', index);
   

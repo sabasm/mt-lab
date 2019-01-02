@@ -30,7 +30,6 @@ logout=(e)=>{
         <NavLink className="nav-links nav-inactive" to="/auth/signup" activeClassName="nav-selected"><span>Signup</span></NavLink>
         <NavLink className="nav-links nav-inactive" to="/" onClick={logout} >Logout</NavLink>
         <NavLink className="nav-links nav-inactive" to="/profile" activeClassName="nav-selected">Profile</NavLink>
-        <NavLink className="nav-links nav-inactive" to="/auth/elogin" activeClassName="nav-selected">staff login</NavLink>
         </section>
       </nav>
     )

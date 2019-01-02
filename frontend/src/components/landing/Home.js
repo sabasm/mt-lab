@@ -34,7 +34,7 @@ login=(e)=>{
       <div className="component-container">
       <div className="landing-front">
       <section className="landing-title">
-      <h1>PitayaLabs</h1>
+      <h1>Confiadoz</h1>
         <h3>¡Bienvenido a una nueva forma de hacer crédito!</h3>
         
         </section>

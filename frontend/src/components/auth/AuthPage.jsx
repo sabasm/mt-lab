@@ -28,7 +28,8 @@ class AuthPage extends Component {
             .then(r=>{
                 localStorage.setItem('loggedUser',JSON.stringify(r))
                 //console.log('logged',r)
-                this.props.history.push('/profile')
+                user.client ? this.props.history.push('/profile'):this.props.history.push('/staff')
+                
                 
             }).catch(e=>{
                 console.log(e)

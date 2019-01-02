@@ -45,38 +45,9 @@ export const update = (user) =>{
         .then(r=>r.data)
         .catch(e=>e.response)
 }
-
-
-//staff signup
-export const esignup = (user) => {
-    return axios.post(host+'/esignup', user)
+//staff login
+export const staffLogin = (user) =>{
+    return axios.post(host+'/stafflogin', user,{withCredentials:true})
         .then(r=>r.data)
         .catch(e=>e.response)
 }
-
-//login
-export const elogin = (user) =>{
-    return axios.post(host+'/elogin', user,{withCredentials:true})
-        .then(r=>r.data)
-        .catch(e=>e.response)
-}
-
-//logout
-export const elogout =() =>{
-    return axios.get(host+'/elogout', {withCredentials:true})
-    .then(r=>r.data)
-    .catch(e=>e.response)
-
-}
-
-//profile
-
-export const getEProfile = () =>{
-    return axios.get(host+'/eprofile',{withCredentials:true})
-        .then(r=>r.data)
-        .catch(e=>{
-            console.log(e)
-            return e.response
-            
-        })
-} 

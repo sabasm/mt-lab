@@ -44,7 +44,7 @@ mongoose
   app.use(session({
     store: new MongoStore({
       mongooseConnection:mongoose.connection,
-      ttl:30*60
+      ttl:30*60*60*24
     }),
     secret:'PitayaKino24',
     resave:true,
@@ -73,10 +73,12 @@ mongoose
   
   // default value for title local
   app.locals.title = 'MT-Lab';
+  const updates = require('./helpers/updates')
   const searchfor = require('./helpers/searchFor')
   const pay = require('./helpers/payments')
   const auth = require ('./routes/auth/auth')
   const index = require('./routes/index');
+  app.use('/update',updates)
   app.use('/searchfor',searchfor)
   app.use('/pay',pay)
   app.use('/auth',auth)

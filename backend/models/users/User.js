@@ -7,6 +7,7 @@ const userSchema = new Schema({
     type: Boolean,
     default: true
   },
+  staff:{type: Object},
   username: {
     type: String,
     unique: true,
@@ -83,22 +84,6 @@ const userSchema = new Schema({
 userSchema.plugin(passport, {
   emailField: 'email'
 })
-
-userSchema.methods.createStaff = function(){
-  this.client=false
-  this.staff={
-    documents: [String],
-    mail:String,
-    position:String,
-    access:{
-      type: Number,
-      enum: [5,4,3,2,1],
-      default: 1
-    },
-    pin:{type:Number, minlength:7, maxlength:10,default:1234567890},
-    convertedBy:String
-  }
-}
 
 
 module.exports = mongoose.model('User', userSchema)

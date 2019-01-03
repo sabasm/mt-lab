@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import {getProfile,update} from '../services/auth'
-import {searchFor} from '../services/database'
+import {getProfile} from '../services/auth'
+import {searchFor,createStaff} from '../services/database'
 import CreateStaff from './createStaff';
 import SelectUsername from './selectUsername';
 
@@ -19,8 +19,8 @@ import SelectUsername from './selectUsername';
     }
     updateProfile=(e)=>{
         e.preventDefault()
-        const {user} = this.state
-        update(user)
+        const content = this.state
+        createStaff(content.newStaff,content.user)
             .then(r=>{
                 console.log("data enviada al server")
                 

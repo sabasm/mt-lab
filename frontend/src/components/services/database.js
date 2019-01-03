@@ -8,3 +8,9 @@ export const searchFor = (user) =>{
       .then(r=>r.data)
       .catch(e=>e.response)
 }
+
+export const createStaff = (newStaff,user) =>{
+    return axios.post(host+'/update/createstaff', {...newStaff,...user},{withCredentials:true})
+        .then(r=>r.data)
+        .catch(e=>e.response)
+  }

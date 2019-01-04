@@ -9,6 +9,15 @@ export const searchFor = (user) =>{
       .catch(e=>e.response)
 }
 
+export const API_lookFor = (lookingFor) =>{
+    return axios.post(host+'/lookfor', lookingFor)
+        .then(r=> {
+            return r.data
+        })
+        
+        .catch(e=>console.log(e))
+  }
+
 export const createStaff = (newStaff,user) =>{
     return axios.post(host+'/update/createstaff', {...newStaff,...user},{withCredentials:true})
         .then(r=>r.data)

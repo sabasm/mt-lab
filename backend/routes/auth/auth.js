@@ -14,10 +14,9 @@ const isAuth = (req, res, next) => {
 router.post('/signup', (req, res, next) => {
   User.register(req.body, req.body.password)
     .then(user => {
-      Client.create({
-        email: user._id
-      })
-
+      // Client.create({
+      //   email: user._id
+      // })
       res.status(201).json(user)
     })
     .catch(e => {
@@ -68,14 +67,13 @@ router.post('/profile/edit', (req, res, next) => {
   var personalData= {
     imgURL,
     phone,
-    name,
     city,
     birthday
   }
 
 
   console.log(personalData)
-  User.findByIdAndUpdate(_id, {personalData})
+  User.findByIdAndUpdate(_id, {personalData,name})
   .then(e=>console.log(e))
   .catch(e=>console.log(e))
 })

@@ -7,6 +7,7 @@ const userSchema = new Schema({
     type: Boolean,
     default: true
   },
+  name:String,
   staff:{type: Object},
   username: {
     type: String,
@@ -29,9 +30,6 @@ const userSchema = new Schema({
   },
   personalData: {
     imgURL: String,
-    name: {
-      type: String
-    },
     phone: {
       number: String,
       verified: {

@@ -1,48 +1,11 @@
 import React, { Component } from 'react'
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
-import {signup, login} from '../services/auth'
 
 class AuthPage extends Component {
 
     state={
         user:{}
-    }
-
-    signup=(e)=>{
-        const {user} = this.state
-        e.preventDefault()
-        signup(user)
-            .then(r=>{
-                console.log(r)
-                this.props.history.push('/login')
-            }).catch(e=>{
-                console.log(e)
-            })
-    }
-
-    login=(e)=>{
-        e.preventDefault()
-        const {user} = this.state
-        login(user)
-            .then(r=>{
-                localStorage.setItem('loggedUser',JSON.stringify(r))
-                //console.log('logged',r)
-                r.client ? this.props.history.push('/profile'):this.props.history.push('/staff')
-                
-                
-            }).catch(e=>{
-                console.log(e)
-            })
-
-    }
-    
-
-    handleText=(e)=>{
-        const {user} = this.state
-        const field = e.target.name
-        user[field] = e.target.value
-        this.setState({user})
     }
 
   render() {
@@ -51,13 +14,9 @@ class AuthPage extends Component {
         <div className="component-container">
         <div className="landing-front">
             {pathname==='/auth/login'?
-            <LoginForm
-                login={this.login}
-                handleText={this.handleText}/>
+            <LoginForm/>
             :
-            <SignupForm 
-                signup={this.signup}
-                handleText={this.handleText}/>    
+            <SignupForm/> 
             }
         </div>
       </div>

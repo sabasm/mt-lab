@@ -75,10 +75,12 @@ mongoose
   app.locals.title = 'MT-Lab';
   const updates = require('./helpers/updates')
   const searchfor = require('./helpers/searchFor')
+  const lookfor = require('./helpers/lookFor')
   const pay = require('./helpers/payments')
   const auth = require ('./routes/auth/auth')
   const index = require('./routes/index');
   app.use('/update',updates)
+  app.use('/lookfor',lookfor)
   app.use('/searchfor',searchfor)
   app.use('/pay',pay)
   app.use('/auth',auth)

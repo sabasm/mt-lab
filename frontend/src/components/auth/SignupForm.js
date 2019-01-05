@@ -1,15 +1,7 @@
-import React, {
-    Component
-} from 'react'
-import {
-    signup
-} from '../services/auth'
-import {
-    Redirect
-} from 'react-router-dom'
-import {
-    API_lookFor
-} from '../services/database'
+import React, {Component} from 'react'
+import {signup} from '../services/auth'
+import {Redirect} from 'react-router-dom'
+import {API_lookFor} from '../services/database'
 import { Link } from 'react-router-dom'
 
 class SignupForm extends Component {
@@ -57,6 +49,7 @@ class SignupForm extends Component {
         e.preventDefault()
         let check=0;
         const {user} = this.state
+        
 //CHECKS EN BASE DE DATOS
         //...CHECK 1
         //buscar usuario repetido
@@ -94,7 +87,7 @@ class SignupForm extends Component {
 //CHECKS IN SITU
             //...CHECK 3
         //checando longitud de usuario
-        if (user.username.length <6 || user.username.length>12){
+        if (user.username === undefined || user.username.length <6 || user.username.length>12){
             this.state.errorsPicker.user2=true
             // console.log("Tu usuario debe ser mayor de 6 caracteres y menor de 12 caracteres")
         }else{

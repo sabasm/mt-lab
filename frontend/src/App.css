@@ -113,6 +113,13 @@ padding-right:4rem;
   flex-flow: row wrap;
   justify-content: space-around;
 }
+.form-errors{
+  color:red;
+}
+.form-info,.form-errors{
+  size: 1.2rem;
+
+}
 
 .nav-bar{
   background-color: black;

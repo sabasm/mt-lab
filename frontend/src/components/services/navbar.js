@@ -26,10 +26,10 @@ logout=(e)=>{
         <NavLink to="/" className="nav-inactive"><img src="" alt="confiadoz-logo"/></NavLink>
         </section>
       <section className="nav-bar-links-container">
-        <NavLink className="nav-links nav-inactive" to="/auth/login" activeClassName="nav-selected"><span>Login</span></NavLink>
-        <NavLink className="nav-links nav-inactive" to="/auth/signup" activeClassName="nav-selected"><span>Signup</span></NavLink>
-        <NavLink className="nav-links nav-inactive" to="/" onClick={logout} >Logout</NavLink>
-        <NavLink className="nav-links nav-inactive" to="/profile" activeClassName="nav-selected">Profile</NavLink>
+        {/* <NavLink className="nav-links nav-inactive" to="/auth/login" activeClassName="nav-selected"><span>Inicia sesión</span></NavLink> */}
+        <NavLink className="nav-links nav-inactive" to="/auth/signup" activeClassName="nav-selected"><span>Regístrate</span></NavLink>
+        <NavLink className="nav-links nav-inactive" to="/" onClick={logout} >Cerrar sesión</NavLink>
+        <NavLink className="nav-links nav-inactive" to="/profile" activeClassName="nav-selected">Perfil</NavLink>
         </section>
       </nav>
     )

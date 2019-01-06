@@ -42,6 +42,48 @@ router.post('/signup', (req, res, next) => {
     .catch(e=>res.status(500).json(e))
 
 })
+
+//Reset pass
+router.post('/resetpass', (req, res, next) => {
+  console.log(req.body)
+  User.findOne({username:req.body.user})
+  .then(user=>{
+    console.log(user)
+        user.setPassword(req.body.password, function(){
+            user.save();
+        });
+        User.findByIdAndUpdate(user._id,{confirmationCode:null})
+        .then(
+          res.status(200).json({message: 'password reset successful'})
+          )
+},function(err){
+    console.error(err);
+})
+
+})
+
+router.post('/resetaccess', (req, res, next) => {
+  let characters = 'PitayaLabReset12345678900987654321';
+      let confirmationCode = '';
+      for (let i = 0; i < 25; i++) {
+        confirmationCode += characters[Math.floor(Math.random() * characters.length)];
+      }
+  User.findOneAndUpdate({
+    email: req.body.email,
+    },{
+      salt:null,hash:null,confirmationCode
+    })
+    .then(user => {
+      console.log(user)
+      nodemailer.resetAccess(user.email,user.username,confirmationCode)
+    })
+    .catch(e => {
+      console.log('fuck')
+      console.log(e)
+    })
+    
+});
+
 //login
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {

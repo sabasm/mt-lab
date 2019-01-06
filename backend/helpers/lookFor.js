@@ -8,7 +8,7 @@ router.post('/', (req,res,next)=> {
   console.log('got ', req.body, 'as parameter')
   User.findOne(req.body)
   .then(response => {
-    response ? res.json({exist:true}) : res.json({exist:false})
+    response ? res.json({exist:true,response}) : res.json({exist:false})
     response ? console.log("Ya existe") : console.log("Continuar")
   })
   .catch(response=>{

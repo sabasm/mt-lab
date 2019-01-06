@@ -11,6 +11,12 @@ export const signup = (user) => {
         .catch(e=>e.response)
 }
 
+export const API_ResetPass = (user) => {
+    return axios.post(host+'/resetpass', user)
+    .then(r=>r.data)
+    .catch(e=>e.response)
+}
+
 //login
 export const login = (user) =>{
     return axios.post(host+'/login', user,{withCredentials:true})
@@ -25,6 +31,11 @@ export const logout =() =>{
     .then(r=>r.data)
     .catch(e=>e.response)
 
+}
+export const API_ResetAccess =(email) =>{
+    return axios.post(host+'/resetaccess',email)
+    .then(r=>r.data)
+    .catch(e=>e.response)
 }
 
 //profile

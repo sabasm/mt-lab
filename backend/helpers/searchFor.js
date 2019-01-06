@@ -7,7 +7,7 @@ router.post('/', (req,res,next)=> {
   let {username} = req.body
   User.findOne({username})
   .then(response => {
-    res.json({id:response._id,name:response.personalData.name})
+    res.json({id:response._id,name:response.name})
   })
   
 })

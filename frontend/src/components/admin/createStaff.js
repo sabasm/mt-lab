@@ -3,6 +3,7 @@ import React from 'react'
 const CreateStaff = ({updateProfile, handleText, newStaff}) => {
   return (
     <div className="all-forms ">
+    {console.log("create staff component ",newStaff)}
     <label>Creando cuenta de asociado para <br/>{newStaff.name}:
       <hr/>
       <form method="POST" onSubmit={updateProfile}>

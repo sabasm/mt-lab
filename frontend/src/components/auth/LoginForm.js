@@ -124,7 +124,7 @@ class LoginForm extends Component {
         </label><br/><br/>
         <button type="submit">Iniciar sesión</button>
         <hr/>
-        <small className="form-info"><br/>¿Olvidaste tus datos de acceso?, da click <Link to="/">aquí</Link>.</small>
+        <small className="form-info"><br/>¿Olvidaste tus datos de acceso?, da click <Link to="/resetaccess">aquí</Link>.</small>
       </form>
       </label>
     </div>

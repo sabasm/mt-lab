@@ -6,6 +6,7 @@ import Profile from './components/users/Profile'
 import Conekta from './components/services/conekta/conekta';
 import staffLogin from './components/admin/staff';
 import createStaffLogics from './components/admin/createStaffLogics';
+import verify from './components/users/verify';
 
 
 const Routes = () => (
@@ -19,6 +20,7 @@ const Routes = () => (
     <Route exact path="/staff" component={staffLogin}/>
     <Route exact path="/profile/edit" component={Profile}/>
     <Route exact path="/profile" component={Profile}/>
+    <Route path="/verify/:code" component={verify}/>
   </Switch>
 )
 

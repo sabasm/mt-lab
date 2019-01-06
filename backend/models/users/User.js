@@ -23,10 +23,13 @@ const userSchema = new Schema({
       required: true
 
     },
-
-    verifiedEmail: {
-      type: Boolean,
-      default: false
+    emailVerificated:{
+      type:Boolean,
+      enum:[false,true],
+      default:false
+    },
+    confirmationCode:{type:String,
+    default:"none"
   },
   personalData: {
     imgURL: String,
@@ -37,7 +40,6 @@ const userSchema = new Schema({
         default: false
       }
     },
-    token: String,
     city: String,
     age: Number,
     birthday: Date

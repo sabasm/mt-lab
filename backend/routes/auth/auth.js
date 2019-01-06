@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const User = require('../../models/users/User')
 const passport = require('../../helpers/passport')
+const nodemailer = require('../../helpers/mailer')
 
 //Middleware check
 const isAuth = (req, res, next) => {
@@ -17,11 +18,29 @@ router.post('/signup', (req, res, next) => {
       // Client.create({
       //   email: user._id
       // })
-      res.status(201).json(user)
+      let characters = 'PitayaLabTokens';
+      let confirmationCode = '';
+      for (let i = 0; i < 25; i++) {
+        confirmationCode += characters[Math.floor(Math.random() * characters.length)];
+      }
+      console.log(confirmationCode)
+
+      User.findOneAndUpdate(user._id, {
+          confirmationCode
+        })
+        .then(user => {
+          console.log("este es el then del update", user)
+          nodemailer.welcomeMail(user.email,user.username,confirmationCode)
+          res.status(201).json(user)
+        })
+        .catch(e => {
+          console.log("no se pudo hacer el update a ", user)
+          res.status(500).json(e)
+        })
     })
-    .catch(e => {
-      res.status(500).json(e)
-    })
+
+    .catch(e=>res.status(500).json(e))
+
 })
 //login
 router.post('/login', (req, res, next) => {
@@ -50,7 +69,6 @@ router.get('/profile', isAuth, (req, res, next) => {
 
 //profile/edit
 router.post('/profile/edit', (req, res, next) => {
-  console.log("user ",req.user._id)
   console.log(req.body.name)
   console.log(req.body.phone)
   console.log(req.body.city)
@@ -60,11 +78,13 @@ router.post('/profile/edit', (req, res, next) => {
   let _id = req.user._id
   console.log(_id)
   let name = req.body.name
-  let phone = {number:req.body.phone}
+  let phone = {
+    number: req.body.phone
+  }
   let city = req.body.city
   let imgURL = req.body.imgURL
   let birthday = req.body.birthday
-  var personalData= {
+  var personalData = {
     imgURL,
     phone,
     city,
@@ -73,8 +93,12 @@ router.post('/profile/edit', (req, res, next) => {
 
 
   console.log(personalData)
-  User.findByIdAndUpdate(_id, {personalData,name})
-  .then(e=>console.log(e))
-  .catch(e=>console.log(e))
+  User.findByIdAndUpdate(_id, {
+      personalData,
+      name
+    })
+    .then(e => console.log(e))
+    .catch(e => console.log(e))
 })
+
 module.exports = router

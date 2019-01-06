@@ -4,8 +4,6 @@ const User = require('../models/users/User')
 //Search username
 
 router.post('/', (req,res,next)=> {
-  console.log(req.body)
-  console.log('looking on backend')
   let {lookingFor} = req.body
   console.log('got ', req.body, 'as parameter')
   User.findOne(req.body)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {getProfile,update} from '../services/auth'
-import MyProfile from './myDashboard';
+import MyDashboard from './myDashboard';
 import EditProfile from './editProfile';
 import { API_Update } from '../services/database';
 
@@ -47,7 +47,7 @@ import { API_Update } from '../services/database';
       if(!loggedUser) this.props.history.push('/')
     return (
       <div className="landing-front">
-          {!this.state.fullUser ? <EditProfile updateProfile={this.updateProfile} handleText={this.handleText}/>:<MyProfile/>}       
+          {!this.state.fullUser ? <EditProfile updateProfile={this.updateProfile} handleText={this.handleText}/>:<MyDashboard/>}       
      </div>
     )
   }

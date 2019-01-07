@@ -1,11 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
+import {getProfile} from '../services/auth'
+import { VerifyMail, ActivateAccount } from './verifications';
 
-const MyProfile = () =>{
+export default class myDashboard extends Component {
+  state={
+    active:{},
+    emailVerificated:{}
+}
+
+  componentWillMount(){
+    let local = JSON.parse(localStorage.getItem('loggedUser'))
+    console.log(local)
+    this.setState({active:local.costumer.status.active,emailVerificated:local.emailVerificated})
+    getProfile()
+        .then(user=>{
+            this.setState({user})
+        }).catch(error=>{
+            console.log(error)
+        })
+}
+  render() {
     return (
-      <div className="profiles-container">
+      <div>
+      {this.state.emailVerificated ? null:<VerifyMail/>}
+      {this.state.active ? null:<ActivateAccount/>}
+      
+
+              <div className="profiles-container">
         <div className="profiles-container-cover">
-            <img id="coverpicture" src="" alt="cover"/>
-            <img id="profilepicture" src="" alt="profile-pic"/>
+
         </div>
         <h2>nombre</h2>
         <hr/>
@@ -16,8 +39,7 @@ const MyProfile = () =>{
             <h3>prestamos and stuff...</h3>
             <p>Die sehr weiter die gezagt die dich dich. So doch mutter manchmal du wo großer der, sanft heut still in.</p>
       </div>
+      </div>
     )
   }
-
-
-export default MyProfile
+}

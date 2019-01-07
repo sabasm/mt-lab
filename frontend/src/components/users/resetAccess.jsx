@@ -83,13 +83,13 @@ export default class resetAccess extends Component {
             <div>
             <label>
             Nueva contraseña: < br />
-            <input type = "password" name = "password" onChange = {this.handleText}/> 
+            <input type = "password" name = "password" onChange = {this.handleText} required/> 
             {this.state.password ? <small className="form-errors"><br/>Tu contraseña debe ser mayor de 5 caracteres y contener por lo menos un número, una mayúscula y una minúscula</small>: 
             <small className="form-info"><br/>Tu contraseña debe ser mayor de 5 caracteres y contener por lo menos un número, una mayúscula y una minúscula</small> }
             </label><br/ > < br />
             <label>
             Repite tu contraseña: < br />
-            <input type = "password" name = "password2" onChange = {this.handleText}/> 
+            <input type = "password" name = "password2" onChange = {this.handleText} required/> 
             {this.state.password ? <small className="form-errors"><br/>Comprueba que las contraseñas coinciden</small>:null}
             </label><br/ > < br />
             <button type = "submit" >Continuar</button> 

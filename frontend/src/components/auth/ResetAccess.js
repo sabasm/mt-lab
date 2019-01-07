@@ -3,7 +3,6 @@ import {API_ResetAccess} from '../services/auth'
 import {Redirect} from 'react-router-dom'
 import {API_lookFor} from '../services/database'
 import { Link } from 'react-router-dom'
-import {signup} from '../services/auth'
 
 class ResetAccess extends Component {
 
@@ -130,7 +129,7 @@ class ResetAccess extends Component {
             :
             <div>
             <label>Ingresa tu correo: < br/>
-            <input type = "email" name = "email" onChange = {this.handleText}/> 
+            <input type = "email" name = "email" onChange = {this.handleText} required/> 
             { this.state.errorsPicker.email1 ?   <small className="form-errors"><br/>¡Oops!, no tenemos este correo registrado, compruebalo o crea tu cuenta <Link to="/auth/signup">aquí</Link></small>:null }
 
             { this.state.errorsPicker.email2 ? 

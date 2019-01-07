@@ -22,10 +22,7 @@ router.post('/createstaff', (req, res, next) => {
 })
 
 router.get('/verify/:code', (req, res, next) => {
-  console.log("ESTO ES REQ = ",req)
-  console.log("ESTO ES RES = ",res)
   const confirmationCode = req.params.code
-
   User.findOneAndUpdate({
       confirmationCode
     },
@@ -42,5 +39,16 @@ router.get('/verify/:code', (req, res, next) => {
     })
     
 });
+
+router.post('/changes', (req, res, next) => {
+  console.log("ESTO LLEGA AL BACKEND DEL BODY", req.body)
+  let updates = req.body.updates
+  console.log("estos son los updates updates",updates," debe ser un objeto")
+
+  console.log("esto es el change al find and update", ({_id:req.body.id,...updates}))
+
+  User.findOneAndUpdate({_id:req.body.id},{...updates})
+    .then(r => {console.log("ya es full user? :D = ",r.fullUser)})
+})
 
 module.exports = router

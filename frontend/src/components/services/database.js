@@ -2,6 +2,13 @@ import axios from 'axios'
 
     const host='http://localhost:3000'
 
+//UPDATOR 3.0
+export const API_Update = (updates) =>{
+    return axios.post(host+'/update/changes',updates ,{withCredentials:true})
+        .then(r=>r.data)
+        .catch(e=>e.response)
+  }
+
 //search for (only for staff use)
 export const searchFor = (user) =>{
   return axios.post(host+'/searchfor', user,{withCredentials:true})

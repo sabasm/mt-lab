@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {login} from '../services/auth'
 import { Redirect } from 'react-router-dom'
-import {API_lookFor} from '../services/database'
+import {API_lookFor, API_Update} from '../services/database'
 import { Link } from 'react-router-dom'
 
 class LoginForm extends Component {
@@ -23,7 +23,7 @@ class LoginForm extends Component {
         if (this.state.client) {
           return <Redirect to='/profile' />
         }else{
-          return <Redirect to='/staff' />}
+          return <Redirect to='/profile' />}
         }
       }
 
@@ -113,14 +113,14 @@ class LoginForm extends Component {
       <form method="POST" onSubmit={this.checker}>
         <label>
             Usuario:<br/>
-            <input type="text" name="username" onChange={this.handleText}/>
+            <input type="text" name="username" onChange={this.handleText} required/>
             { this.state.errorsPicker.user1 ? <small className="form-errors"><br/>Este usuario no existe</small>: null }
             { this.state.errorsPicker.user2 ?  <small className="form-errors"><br/>Comprueba tu usuario y contraseña</small> :
             <small className="form-info"><br/>Ingresa tu usuario y contraseña para iniciar sesión</small>}
         </label><br/><br/>
         <label>
             Password:<br/>
-            <input type="password" name="password" onChange={this.handleText}/>
+            <input type="password" name="password" onChange={this.handleText} required/>
         </label><br/><br/>
         <button type="submit">Iniciar sesión</button>
         <hr/>

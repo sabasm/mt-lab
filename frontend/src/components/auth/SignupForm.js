@@ -150,7 +150,7 @@ class SignupForm extends Component {
             Usuario: < br/>
             <input type = "text"
             name = "username"
-            onChange = {this.handleText}/> 
+            onChange = {this.handleText} required/> 
             { this.state.errorsPicker.user1 ? <small className="form-errors"><br/>Excelente nombre, pero ya está en uso, ¡elige uno mejor!</small>: null }
             { this.state.errorsPicker.user2 ? <small className="form-errors"><br/>Tu usuario debe ser mayor de 6 caracteres y menor de 12 caracteres</small>: 
             <small className="form-info"><br/>Tu usuario debe ser mayor de 6 caracteres y menor de 12 caracteres</small> }
@@ -159,14 +159,14 @@ class SignupForm extends Component {
             Nombre completo: < br />
             <input type = "text"
             name = "name"
-            onChange = {this.handleText}/> 
+            onChange = {this.handleText} required/> 
             { this.state.errorsPicker.name ? <small className="form-errors"><br/>Ingresa tu nombre completo</small>:null}
             </label><br/> < br />
             <label>
             Email: < br/>
             <input type = "email"
             name = "email"
-            onChange = {this.handleText}/> 
+            onChange = {this.handleText} required/> 
 
             { this.state.errorsPicker.email1 ? <small className="form-errors"><br/>Este correo ya está en uso, si olvidaste tu contraseña da click <Link to="/">aquí</Link>.</small>: null }
             { this.state.errorsPicker.email2 ? <small className="form-errors"><br/>Ingresa un email válido</small>: null }
@@ -175,7 +175,7 @@ class SignupForm extends Component {
 
             <label>
             Contraseña: < br />
-            <input type = "password" name = "password" onChange = {this.handleText}/> 
+            <input type = "password" name = "password" onChange = {this.handleText} required/> 
             {this.state.errorsPicker.password ? <small className="form-errors"><br/>Tu contraseña debe ser mayor de 5 caracteres y contener por lo menos un número, una mayúscula y una minúscula</small>: 
             <small className="form-info"><br/>Tu contraseña debe ser mayor de 5 caracteres y contener por lo menos un número, una mayúscula y una minúscula</small> }
             </label><br/ > < br />

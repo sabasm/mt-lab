@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 import {getProfile,update} from '../services/auth'
-import MyProfile from './myProfile';
+import MyProfile from './myDashboard';
 import EditProfile from './editProfile';
+import { API_Update } from '../services/database';
 
  class ProfilePage extends Component {
 
     state={
-        user:{}
+        user:{},
+        fullUser:false
     }
 
     componentWillMount(){
+        let local = JSON.parse(localStorage.getItem('loggedUser'))
+        this.setState({fullUser:local.fullUser})
         getProfile()
             .then(user=>{
                 this.setState({user})
@@ -20,14 +24,15 @@ import EditProfile from './editProfile';
     updateProfile=(e)=>{
         e.preventDefault()
         const {user} = this.state
-        update(user)
-            .then(r=>{
-                console.log("data enviada al server")
-                
-            }).catch(e=>{
-                console.log(e)
-            })
 
+        console.log("user state después del en el method en clase de update profile= ",this.state.user)
+        update(user)
+        const updates= {fullUser:true}
+        const id = {_id:this.state.user._id}
+        let changes = { id , updates}
+        console.log (changes)
+         API_Update(changes)
+             .then(r => {console.log("ya es full user? :D = ",r.fullUser)})
     }
 
     handleText=(e)=>{
@@ -40,23 +45,10 @@ import EditProfile from './editProfile';
   render() {
       const loggedUser = JSON.parse(localStorage.getItem('loggedUser'))
       if(!loggedUser) this.props.history.push('/')
-     // const {path} = this.props.location
-  
     return (
       <div className="landing-front">
-         {/* {path==='/profile/edit'?
-            <EditProfile
-                updateProfile={this.updateProfile}
-                handleText={this.handleText}
-                user/>
-            : */}
-            {/* <MyProfile/>   */}
-            <EditProfile
-                updateProfile={this.updateProfile}
-                handleText={this.handleText}/>
-            
-          
-      </div>
+          {!this.state.fullUser ? <EditProfile updateProfile={this.updateProfile} handleText={this.handleText}/>:<MyProfile/>}       
+     </div>
     )
   }
 }

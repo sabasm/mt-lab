@@ -7,8 +7,10 @@ const userSchema = new Schema({
     type: Boolean,
     default: true
   },
-  name:String,
-  staff:{type: Object},
+  name: String,
+  staff: {
+    type: Object
+  },
   username: {
     type: String,
     unique: true,
@@ -17,19 +19,21 @@ const userSchema = new Schema({
     maxlength: 12,
   },
   documents: [String],
+  curp: String,
   email: {
-      type: String,
-      unique: true,
-      required: true
+    type: String,
+    unique: true,
+    required: true
 
-    },
-    emailVerificated:{
-      type:Boolean,
-      enum:[false,true],
-      default:false
-    },
-    confirmationCode:{type:String,
-    default:"none"
+  },
+  emailVerificated: {
+    type: Boolean,
+    enum: [false, true],
+    default: false
+  },
+  confirmationCode: {
+    type: String,
+    default: "none"
   },
   personalData: {
     imgURL: String,
@@ -40,12 +44,21 @@ const userSchema = new Schema({
         default: false
       }
     },
+    state: String,
     city: String,
     age: Number,
     birthday: Date
   },
-  costumer:{
+  fullUser: {
+    type: Boolean,
+    default: false
+  },
+  costumer: {
     status: {
+      active:{
+        type:Boolean,
+        default:false
+      },
       tax: {
         type: Number,
         default: 20

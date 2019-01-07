@@ -15,6 +15,8 @@ const isAuth = (req, res, next) => {
 router.post('/signup', (req, res, next) => {
   User.register(req.body, req.body.password)
     .then(user => {
+      let promiseSign = new Promise ((resolve,reject)=>{
+        console.log("este es el user del user register", user)
       // Client.create({
       //   email: user._id
       // })
@@ -23,20 +25,23 @@ router.post('/signup', (req, res, next) => {
       for (let i = 0; i < 25; i++) {
         confirmationCode += characters[Math.floor(Math.random() * characters.length)];
       }
-      console.log(confirmationCode)
+      resolve({confirmationCode,id:user._id})
 
-      User.findOneAndUpdate(user._id, {
-          confirmationCode
-        })
-        .then(user => {
-          console.log("este es el then del update", user)
-          nodemailer.welcomeMail(user.email,user.username,confirmationCode)
+      })
+
+      promiseSign.then( r=>{
+        User.findOneAndUpdate({_id:r.id}, {confirmationCode:r.confirmationCode})
+        .then(found => {
+          console.log("este es el mail en el then del update", found.email)
+          nodemailer.welcomeMail(found.email,found.name,r.confirmationCode)
           res.status(201).json(user)
         })
+      })
         .catch(e => {
           console.log("no se pudo hacer el update a ", user)
           res.status(500).json(e)
         })
+      
     })
 
     .catch(e=>res.status(500).json(e))
@@ -75,7 +80,7 @@ router.post('/resetaccess', (req, res, next) => {
     })
     .then(user => {
       console.log(user)
-      nodemailer.resetAccess(user.email,user.username,confirmationCode)
+      nodemailer.resetAccess(user.email,user.name,confirmationCode)
     })
     .catch(e => {
       console.log('fuck')
@@ -114,21 +119,22 @@ router.post('/profile/edit', (req, res, next) => {
   console.log(req.body.name)
   console.log(req.body.phone)
   console.log(req.body.city)
-  console.log(req.body.imgURL)
+  console.log(req.body.curp)
   console.log(req.body.birthday)
 
   let _id = req.user._id
-  console.log(_id)
   let name = req.body.name
   let phone = {
     number: req.body.phone
   }
+  let state = req.body.state
   let city = req.body.city
-  let imgURL = req.body.imgURL
+  let curp = req.body.curp
   let birthday = req.body.birthday
   var personalData = {
-    imgURL,
+    curp,
     phone,
+    state,
     city,
     birthday
   }
@@ -139,8 +145,8 @@ router.post('/profile/edit', (req, res, next) => {
       personalData,
       name
     })
-    .then(e => console.log(e))
-    .catch(e => console.log(e))
+    .then(e => e)
+    .catch(e => r)
 })
 
 module.exports = router

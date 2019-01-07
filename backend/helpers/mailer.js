@@ -10,10 +10,11 @@ const transport = nodemailer.createTransport({
 })
 
 module.exports.welcomeMail = function (email, name,code){
+  console.log("este email llegó al mailer ",email)
   transport.sendMail({
-    bcc:email,
     subject:"Verifica tu cuenta en PitayaLabs Microcréditos",
-    from:"smma1992@gmail.com",
+    from:process.env.MAILER,
+    to:email,
     html:`
     <h1>Bienvenido ${name}!</h1>
     <a href="http://localhost:3001/verify/${code}"> Activa tu cuenta aquí </a>
@@ -22,7 +23,7 @@ module.exports.welcomeMail = function (email, name,code){
 
   })
   .then(res=>{
-    console.log(res)
+    //console.log(res)
   })
   .catch(err=>{
     console.log(e)
@@ -33,10 +34,12 @@ module.exports.welcomeMail = function (email, name,code){
 
 
 module.exports.resetAccess = function (email, name,code){
+
+  console.log(email)
   transport.sendMail({
-    bcc:email,
     subject:"Reestablece tu contraseña en PitayaLabs Microcréditos",
-    from:"smma1992@gmail.com",
+    from:process.env.MAILER,
+    to:email,
     html:`
     <h1>Hola ${name}!</h1>
     <a href="http://localhost:3001/resetaccess/${code}"> reestablece tus datos de accesso aquí </a>

@@ -42,7 +42,10 @@ export const API_ResetAccess =(email) =>{
 
 export const getProfile = () =>{
     return axios.get(host+'/profile',{withCredentials:true})
-        .then(r=>r.data)
+        .then(r=>{
+            return r.data
+        })
+        
         .catch(e=>{
             console.log(e)
             return e.response
@@ -53,7 +56,7 @@ export const getProfile = () =>{
 //update profile edit
 export const update = (user) =>{
     return axios.post(host+'/profile/edit',user,{withCredentials:true})
-        .then(r=>r.data)
+        .then(r=>console.log("esta es la respuesta del update profile en el front= ",r))
         .catch(e=>e.response)
 }
 //staff login

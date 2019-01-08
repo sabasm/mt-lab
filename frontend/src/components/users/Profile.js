@@ -8,7 +8,8 @@ import { API_Update } from '../services/database';
 
     state={
         user:{},
-        fullUser:false
+        fullUser:false,
+        redirect:{}
     }
 
     componentWillMount(){
@@ -21,18 +22,25 @@ import { API_Update } from '../services/database';
                 console.log(error)
             })
     }
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <MyDashboard/>
+        }
+    }
     updateProfile=(e)=>{
         e.preventDefault()
         const {user} = this.state
-
-        console.log("user state después del en el method en clase de update profile= ",this.state.user)
         update(user)
         const updates= {fullUser:true}
         const id = {_id:this.state.user._id}
         let changes = { id , updates}
         console.log (changes)
          API_Update(changes)
-             .then(r => {console.log("ya es full user? :D = ",r.fullUser)})
+             .then(r => {
+                this.setState({
+                    redirect: true
+                })
+             })
     }
 
     handleText=(e)=>{
@@ -46,8 +54,8 @@ import { API_Update } from '../services/database';
       const loggedUser = JSON.parse(localStorage.getItem('loggedUser'))
       if(!loggedUser) this.props.history.push('/')
     return (
-      <div className="landing-front">
-          {!this.state.fullUser ? <EditProfile updateProfile={this.updateProfile} handleText={this.handleText}/>:<MyDashboard/>}       
+      <div className="landing-front"> 
+          {!this.state.fullUser  ? <EditProfile updateProfile={this.updateProfile} handleText={this.handleText}/>:<MyDashboard/>}       
      </div>
     )
   }

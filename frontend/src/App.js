@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Routes from './Routes';
 import Navbar from './components/services/navbar'
+import "antd/dist/antd.css";
 
 class App extends Component {
 

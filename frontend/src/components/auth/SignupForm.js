@@ -3,6 +3,8 @@ import {signup} from '../services/auth'
 import {Redirect} from 'react-router-dom'
 import {API_lookFor} from '../services/database'
 import { Link } from 'react-router-dom'
+import { Button } from 'antd'
+
 
 class SignupForm extends Component {
 
@@ -123,7 +125,10 @@ class SignupForm extends Component {
         Promise.all([busqueda1,busqueda2])
         .then(()=>{
             console.log(this.state.errorsPicker)
-            if(check === 6){ this.signup()}else{this.setState ({error:true})}
+            if(check === 6){ 
+                this.signup() 
+                this.enterLoading()
+            }else{this.setState ({error:true})}
         })
         .catch(r=>console.log("no entra al then pero si al catch del promise all"))
     }
@@ -179,7 +184,8 @@ class SignupForm extends Component {
             {this.state.errorsPicker.password ? <small className="form-errors"><br/>Tu contraseña debe ser mayor de 5 caracteres y contener por lo menos un número, una mayúscula y una minúscula</small>: 
             <small className="form-info"><br/>Tu contraseña debe ser mayor de 5 caracteres y contener por lo menos un número, una mayúscula y una minúscula</small> }
             </label><br/ > < br />
-            <button type = "submit" > Registrate </button> </form> </label> </div>
+            <Button key="submit" htmlType="submit" type="submit" loading={this.state.loading}>Regístrate</Button>
+            </form> </label> </div>
         )
     }
 }

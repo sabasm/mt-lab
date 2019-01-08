@@ -54,6 +54,10 @@ const userSchema = new Schema({
     default: false
   },
   costumer: {
+    pitayaCardOwner:{
+      type:Boolean,
+      default:false
+    },
     status: {
       active:{
         type:Boolean,

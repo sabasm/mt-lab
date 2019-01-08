@@ -1,6 +1,6 @@
 import React from 'react'
+import { Button } from 'antd'
 const EditProfile = ({updateProfile, handleText}) => {
-    
   return (
     <div className="all-forms">
       <label>Editar perfil:
@@ -33,7 +33,7 @@ const EditProfile = ({updateProfile, handleText}) => {
             Fecha de nacimiento:<br/>
             <input type="date" name="birthday" onChange={handleText} required/>
         </label><br/><br/>
-        <button type="submit">Guardar</button>
+        <Button key="submit" htmlType="submit" type="submit" >Guardar</Button>
       </form>
       </label>
     </div>

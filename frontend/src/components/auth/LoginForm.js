@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import {login} from '../services/auth'
-import { Redirect } from 'react-router-dom'
-import {API_lookFor, API_Update} from '../services/database'
-import { Link } from 'react-router-dom'
+import { Redirect,Link } from 'react-router-dom'
+import {API_lookFor} from '../services/database'
+import { Button } from 'antd'
+
+
 
 class LoginForm extends Component {
 
@@ -15,9 +17,18 @@ class LoginForm extends Component {
           //Este usuario no existe
           user1:false,
           //Comprueba tu usuario y contraseña
-          user2:false}
+          user2:false},
+          loading: false,
+    iconLoading: false,
       }
-      
+      enterLoading = () => {
+        this.setState({ loading: true });
+      }
+    
+      enterIconLoading = () => {
+        this.setState({ iconLoading: true });
+      }
+
       renderRedirect = () => {
         if (this.state.redirect) {
         if (this.state.client) {
@@ -91,7 +102,9 @@ class LoginForm extends Component {
 
     Promise.all([busqueda1])
     .then(()=>{
-        if(check === 2){ this.login()}else{this.setState ({error:true})}
+        if(check === 2){ 
+            this.login() 
+            this.enterLoading()}else{this.setState ({error:true})}
     })
     .catch(r=>console.log("no entra al then pero si al catch del promise all"))
 }
@@ -122,11 +135,12 @@ class LoginForm extends Component {
             Password:<br/>
             <input type="password" name="password" onChange={this.handleText} required/>
         </label><br/><br/>
-        <button type="submit">Iniciar sesión</button>
+       <Button key="submit" htmlType="submit" type="submit" loading={this.state.loading} >Iniciar sesión</Button>
         <hr/>
         <small className="form-info"><br/>¿Olvidaste tus datos de acceso?, da click <Link to="/resetaccess">aquí</Link>.</small>
       </form>
       </label>
+
     </div>
     )
   }

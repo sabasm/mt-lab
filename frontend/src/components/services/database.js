@@ -5,7 +5,9 @@ import axios from 'axios'
 //UPDATOR 3.0
 export const API_Update = (updates) =>{
     return axios.post(host+'/update/changes',updates ,{withCredentials:true})
-        .then(r=>r.data)
+        .then(r=>{
+            return r.data
+        })
         .catch(e=>e.response)
   }
 

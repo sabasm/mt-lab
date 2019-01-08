@@ -3,6 +3,8 @@ import {API_ResetAccess} from '../services/auth'
 import {Redirect} from 'react-router-dom'
 import {API_lookFor} from '../services/database'
 import { Link } from 'react-router-dom'
+import { Button } from 'antd'
+
 
 class ResetAccess extends Component {
 
@@ -124,7 +126,7 @@ class ResetAccess extends Component {
 
             <div><small className="form-info"><br/>¡Te hemos enviado un correo!</small>
             <br/>< br/>      
-            <button type = "submit" >Continuar</button> 
+            <Button key="submit" htmlType="submit" type="submit" loading={this.state.loading} onClick={this.enterLoading}>Continuar</Button>
             </div>
             :
             <div>
@@ -136,7 +138,7 @@ class ResetAccess extends Component {
             <small className="form-errors"><br/>
             Al parecer este correo no es válido.</small>: null}
             </label><br/>< br/>
-            <button type = "submit" >Recuperar acceso</button> 
+            <Button key="submit" htmlType="submit" type="submit" loading={this.state.loading} onClick={this.enterLoading}>Recuperar acceso</Button>
             </div>}
             </form> </label> </div></div></div>
         )

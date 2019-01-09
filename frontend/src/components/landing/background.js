@@ -5,7 +5,7 @@ class BackgroundVideo extends Component {
         super(props);
 
         this.state = {
-            videoURL: 'http://techslides.com/demos/sample-videos/small.mp4'
+            videoURL: 'https://firebasestorage.googleapis.com/v0/b/mt-lab-298ee.appspot.com/o/assets%2Flanding%20page%2Fcover%20video.mp4?alt=media&token=43f5b1d3-bbda-41fc-a5b0-46f1ff653656'
         }
     }
 

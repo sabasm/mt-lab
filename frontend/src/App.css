@@ -59,7 +59,6 @@
   align-content: center;
   box-sizing: content-box;
   padding-top: 4rem;
-
 }
 
 .landing-info-invest {
@@ -71,14 +70,17 @@
   padding-left: 4rem;
   padding-right: 4rem;
 }
-
+.landing-info img{
+  max-width:180px;
+  max-height: 180px;
+}
 .landing-front,.landing-front-video {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-flow: row wrap;
   width: 100vw;
-  height: 89vh;
+  height: calc(100vh - 6rem);
    }
 
    .landing-front-video{
@@ -131,6 +133,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b5bdc8', e
   flex-flow: row wrap;
   justify-content: space-around;
 }
+.nav-bar-links-menu {
+  display: none;
+}
 
 .form-errors {
   color: red;
@@ -146,10 +151,11 @@ video#background-video {
   position: absolute;
   z-index: -1;
   object-fit: cover;
-  top: 3rem;
+  top: 0;
   left: 0px;
   width: 100vw;
   height: 100vh;
+  box-sizing: content-box;
 }
 
 .nav-bar {
@@ -165,15 +171,40 @@ video#background-video {
   min-height: 3rem;
 }
 #landing-logo{
-
+  height: 10vh;
+  width: 10vh;
+    max-height: 180px;
+    max-width: 180px;
   position: relative;
   z-index: 1;
+  transform: translateY(4vh);
 }
 
 #landing-calculator{
   width: auto;
-  padding-top: 10%;   
-  transform: translateY(-55px);
+  padding-top: 2vh;
   position: relative;
   z-index: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  #landing-calculator{
+    width: auto;
+    padding-top: 2vh;
+    position: relative;
+    z-index: 0;
+  }
+  .nav-bar-links-container {
+    display: none;
+  }
+  .nav-bar-links-menu {
+    display:flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  }
+  #menu-icon{
+    width: 100%;
+    height: 100%;
+  }
 }

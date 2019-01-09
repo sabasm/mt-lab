@@ -1,6 +1,7 @@
-*{
+* {
   font-family: 'Raleway', sans-serif;
 }
+
 .App {
   text-align: center;
 }
@@ -29,107 +30,150 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
-.landing-info-cards{
+
+.landing-info-cards {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  align-items:center;
-  background-color: aquamarine;
-  box-sizing: content-box; 
+  align-items: center;
+  background-color: rgb(146, 236, 206);
+  box-sizing: content-box;
   padding: 2rem;
-  
+
 }
+
 .landing-info-cards section {
   align-content: center;
-  box-sizing: content-box;  
+  box-sizing: content-box;
   width: 30vh;
-  height: 20vh;
+  height: auto;
   padding: 2rem;
 }
-.landing-front{
+
+.landing-front {
   align-content: center;
   box-sizing: content-box;
   padding-top: 4rem;
-  background-color: bisque;
 
 }
-.landing-info-invest{
+
+.landing-info-invest {
   align-content: center;
   box-sizing: content-box;
   padding-top: 4rem;
   padding-bottom: 2rem;
   background-color: bisque;
-padding-left: 4rem;
-padding-right:4rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 
-.landing-front{
+.landing-front,.landing-front-video {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-flow: row wrap;
   width: 100vw;
   height: 89vh;
+   }
 
-}
-#año-mes input{
+   .landing-front-video{
+     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b5bdc8+0,828c95+36,28343b+100&0+0,0.5+100;Grey+Black+3D */
+background: -moz-linear-gradient(left, rgba(181,189,200,0) 0%, rgba(130,140,149,0.18) 36%, rgba(40,52,59,0.5) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, rgba(181,189,200,0) 0%,rgba(130,140,149,0.18) 36%,rgba(40,52,59,0.5) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, rgba(181,189,200,0) 0%,rgba(130,140,149,0.18) 36%,rgba(40,52,59,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b5bdc8', endColorstr='#8028343b',GradientType=1 ); /* IE6-9 */
+
+   }
+
+
+#año-mes input {
   width: 3rem;
 }
-#año-mes{
+
+#año-mes {
   display: flex;
   justify-content: center;
 }
 
-.all-forms{
-  background-color:white;
-  max-width:15vw;
-  height:auto;
-  padding:4rem;
+.all-forms {
+  background-color: white;
+  max-width: 15vw;
+  height: auto;
+  padding: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-flow: column wrap;
 }
 
-.nav-selected{
-  font-weight:bold;
+.nav-selected {
+  font-weight: bold;
 }
 
-.nav-inactive{
-    color: #fff;
-    text-decoration: none;
+.nav-inactive {
+  color: #fff;
+  text-decoration: none;
 }
-.nav-inactive:hover{
+
+.nav-inactive:hover {
   color: gray;
   text-decoration: none;
 }
-.nav-bar-links-container{
-  width:40%;
-  display:flex;
+
+.nav-bar-links-container {
+  width: 40%;
+  display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
 }
-.form-errors{
-  color:red;
+
+.form-errors {
+  color: red;
 }
-.form-info,.form-errors{
+
+.form-info,
+.form-errors {
   size: 1.2rem;
 
 }
 
-.nav-bar{
-  background-color: black;
+video#background-video {
+  position: absolute;
+  z-index: -1;
+  object-fit: cover;
+  top: 3rem;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.nav-bar {
+  background-color: rgb(54, 54, 54);
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  align-items:center;
-  box-sizing: content-box; 
-  padding-left: 2rem;
+  align-items: center;
+  box-sizing: content-box;
+  padding-left: 4rem;
   padding-right: 2rem;
   height: auto;
-  min-height:3rem;
+  min-height: 3rem;
+}
+#landing-logo{
+
+  position: relative;
+  z-index: 1;
+}
+
+#landing-calculator{
+  width: auto;
+  padding-top: 10%;   
+  transform: translateY(-55px);
+  position: relative;
+  z-index: 0;
 }

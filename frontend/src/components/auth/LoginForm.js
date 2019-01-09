@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import {login} from '../services/auth'
 import { Redirect,Link } from 'react-router-dom'
 import {API_lookFor} from '../services/database'
-import { Button } from 'antd'
+import { Button , Input, Icon, Card} from 'antd'
 
-
+const { Meta } = Card;
 
 class LoginForm extends Component {
 
@@ -19,12 +19,11 @@ class LoginForm extends Component {
           //Comprueba tu usuario y contraseña
           user2:false},
           loading: false,
-    iconLoading: false,
+          iconLoading: false,
       }
       enterLoading = () => {
         this.setState({ loading: true });
-      }
-    
+      }    
       enterIconLoading = () => {
         this.setState({ iconLoading: true });
       }
@@ -120,27 +119,32 @@ class LoginForm extends Component {
   render() {
     
     return (
-     <div className="all-forms">{this.renderRedirect()}
-      <label>Iniciar sesión:
-          <hr/>
+     <div>{this.renderRedirect()}
+<Card style={{ width: 250, marginTop: 16 }} >
+  <Meta
+    title="Iniciar sesión"
+    // description="LogIn card for PitayaLabs Microcréditos"
+/>
+  <label>
       <form method="POST" onSubmit={this.checker}>
         <label>
-            Usuario:<br/>
-            <input type="text" name="username" onChange={this.handleText} required/>
+            <hr/>
+            <Input size="small" placeholder="Usuario" prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} type="text" name="username" onChange={this.handleText} required/>
+            {/* <input type="text" name="username" onChange={this.handleText} required/> */}
             { this.state.errorsPicker.user1 ? <small className="form-errors"><br/>Este usuario no existe</small>: null }
             { this.state.errorsPicker.user2 ?  <small className="form-errors"><br/>Comprueba tu usuario y contraseña</small> :
             <small className="form-info"><br/>Ingresa tu usuario y contraseña para iniciar sesión</small>}
         </label><br/><br/>
         <label>
-            Password:<br/>
-            <input type="password" name="password" onChange={this.handleText} required/>
+            <Input size="small" placeholder="Contraseña" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" name="password" onChange={this.handleText} required/>
+            {/* <input type="password" name="password" onChange={this.handleText} required/> */}
         </label><br/><br/>
        <Button key="submit" htmlType="submit" type="submit" loading={this.state.loading} >Iniciar sesión</Button>
         <hr/>
         <small className="form-info"><br/>¿Olvidaste tus datos de acceso?, da click <Link to="/resetaccess">aquí</Link>.</small>
       </form>
       </label>
-
+</Card>
     </div>
     )
   }

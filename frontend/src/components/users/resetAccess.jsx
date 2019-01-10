@@ -47,7 +47,6 @@ export default class resetAccess extends Component {
         e.preventDefault()
         let check=0;
         const {user} = this.state
-        console.log("checker ",user)
         
         //...CHECK 1
         //comprobando contraseña

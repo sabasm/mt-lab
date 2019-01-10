@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-    const host='http://localhost:3000'
+    const host='https://mt-lab-backend.herokuapp.com'
 
 //UPDATOR 3.0
 export const API_Update = (updates) =>{

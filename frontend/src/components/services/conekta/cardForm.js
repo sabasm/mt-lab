@@ -1,45 +1,50 @@
 import React from 'react'
+import { Button, Input,Card } from 'antd'
+const { Meta } = Card;
+
 
 const CardForm = ({validate, handleText}) => {
+
   return (
-    <div className="all-forms">
-      <label>Ingresa tus datos bancarios:
-          <hr/>
+        <div>
+            <Card style={{ width: 300, marginTop: 16 }} >
+              <Meta
+                title="Ingresa tus datos bancarios"
+                // description="LogIn card for PitayaLabs Microcréditos"
+            /><hr/>
+      <label>
       <form method="POST" onSubmit={validate}>
       <label>
-            Nombre en tarjeta:<br/>
-            <input type="text" name="name" onChange={handleText} required/>
+      <Input size="small" placeholder="Nombre Completo" type="text" name="name" required/> 
         </label><br/><br/>
         <label>
-            16 digitos de tarjeta:<br/>
-            <input type="number" name="number" onChange={handleText} required/>
+        <Input size="small" placeholder="16 digitos de tarjeta" type="number" name="number" required/> 
         </label><br/><br/>
         <label>
-            Fecha de caducidad:<br/>
-            mes/año (MM/AA):<br/>
+        Fecha de caducidad:
             <section id="año-mes">
-            <input type="number" name="exp_month" placeholder="02" onChange={handleText} required/>/<input type="number" name="exp_year" placeholder="20" onChange={handleText} required/>
+            <Input size="small" placeholder="MM" type="number" name="exp_month" required/> 
+            <Input size="small" placeholder="AA" type="number" name="exp_year" required/> 
             </section>
         </label><br/>
         <label>
-            cvc:<br/>
-            <input type="number" name="cvc" placeholder="123" onChange={handleText} required/>
+        <Input size="small" placeholder="123" type="number" name="cvc" required/> 
         </label><br/><br/>
         <label>
             Dirección:<br/>
-            <input type="text" name="street1" placeholder="Calle Constituyentes #301" onChange={handleText} required/>
-            <input type="text" name="street2" placeholder="Col. Misión del Real" onChange={handleText} required/>
-            <input type="text" name="city" placeholder="Hermosillo" onChange={handleText} required/>
-            <input type="text" name="state" placeholder="Sonora" onChange={handleText} required/>
-            <input type="number" name="zip" placeholder="83100" onChange={handleText} required/>
-            <input hidden type="number" name="country" placeholder="México" onChange={handleText} required/>
-        
+            <Input size="small" placeholder="Calle Constituyentes #301" type="text" name="street1" required/> 
+            <Input size="small" placeholder="Col. Misión del Real" type="text" name="street2" required/> 
+            <Input size="small" placeholder="Hermosillo" type="text" name="city" required/> 
+            <Input size="small" placeholder="Sonora" type="text" name="state" required/> 
+            <Input size="small" placeholder="83100" type="number" name="zip" required/> 
+            <Input hidden size="small" placeholder="México" value="México" type="text" name="country"/>         
         </label><br/><br/>
-        <button type="submit">Enviar</button>
+        <Button key="submit" htmlType="submit" type="submit" >Guardar</Button>
       </form>
       </label>
+      </Card>
     </div>
-  )
+      )
 }
 
 export default CardForm

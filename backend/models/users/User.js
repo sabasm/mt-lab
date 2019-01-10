@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const passport = require('passport-local-mongoose');
 
 const userSchema = new Schema({
+  curp: String,
   client: {
     type: Boolean,
     default: true
@@ -19,7 +20,6 @@ const userSchema = new Schema({
     maxlength: 12,
   },
   documents: [String],
-  curp: String,
   email: {
     type: String,
     unique: true,
@@ -39,6 +39,10 @@ const userSchema = new Schema({
     imgURL: String,
     phone: {
       number: String,
+      demo:{
+        type: Boolean,
+        default: false
+      },
       verified: {
         type: Boolean,
         default: false
@@ -54,14 +58,14 @@ const userSchema = new Schema({
     default: false
   },
   costumer: {
-    pitayaCardOwner:{
-      type:Boolean,
-      default:false
+    pitayaCardOwner: {
+      type: Boolean,
+      default: false
     },
     status: {
-      active:{
-        type:Boolean,
-        default:false
+      active: {
+        type: Boolean,
+        default: false
       },
       tax: {
         type: Number,
@@ -83,6 +87,7 @@ const userSchema = new Schema({
         enum: ['weekly', 'biweekly', 'monthly'],
         default: 'monthly'
       }
+
     },
     paymentsDates: [Date],
     conektaCostumerId: String,
@@ -90,7 +95,27 @@ const userSchema = new Schema({
       invites: [String]
     }
 
-  }
+  },
+  card: {
+    demo:{
+      type: Boolean,
+      default: false
+    },
+    number: Number,
+    name:String,
+    exp_year: Number,
+    exp_month: Number,
+    cvc: Number,
+    address: {
+      street1: String,
+      street2: String,
+      city: String,
+      state: String,
+      zip: Number,
+      country: String
+    }
+  },
+
 }, {
   timestamps: {
     createdAt: true,

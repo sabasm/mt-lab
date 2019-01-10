@@ -44,12 +44,12 @@ mongoose
   app.use(session({
     store: new MongoStore({
       mongooseConnection:mongoose.connection,
-      ttl:30*60*60*24
+      ttl:86400
     }),
     secret:'PitayaKino24',
     resave:true,
     saveUninitialized:true,
-    cookie:{httpOnly:true,maxAge:60000}  
+    cookie:{httpOnly:true,maxAge:86400}  
   }))
   
   app.use(passport.initialize())
@@ -66,7 +66,8 @@ mongoose
   
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'hbs');
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use('/public', express.static(path.join(__dirname, 'public')));
+  //app.use(express.static(path.join(__dirname, 'public')));
   app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
   
   

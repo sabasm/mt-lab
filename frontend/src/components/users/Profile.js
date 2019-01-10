@@ -4,6 +4,8 @@ import MyDashboard from './myDashboard';
 import EditProfile from './editProfile';
 import { API_Update } from '../services/database';
 
+import { withRouter} from 'react-router-dom'
+
  class ProfilePage extends Component {
 
     state={
@@ -34,12 +36,12 @@ import { API_Update } from '../services/database';
         const updates= {fullUser:true}
         const id = {_id:this.state.user._id}
         let changes = { id , updates}
-        console.log (changes)
          API_Update(changes)
              .then(r => {
                 this.setState({
                     redirect: true
                 })
+                this.props.history.push('/profile')
              })
     }
 
@@ -53,11 +55,15 @@ import { API_Update } from '../services/database';
   render() {
       const loggedUser = JSON.parse(localStorage.getItem('loggedUser'))
       if(!loggedUser) this.props.history.push('/')
+      const {pathname} = this.props.location
     return (
-      <div className="landing-front"> 
-          {!this.state.fullUser  ? <EditProfile updateProfile={this.updateProfile} handleText={this.handleText}/>:<MyDashboard/>}       
+      <div className="landing-front">
+          {pathname==='/profile/edit'  ? <EditProfile updateProfile={this.updateProfile} handleText={this.handleText}/>:<MyDashboard/>}       
+    
      </div>
     )
   }
 }
+ProfilePage=withRouter(ProfilePage)
 export default ProfilePage
+       

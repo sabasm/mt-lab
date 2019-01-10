@@ -1,40 +1,45 @@
 import React, { Component } from 'react'
 import {getProfile} from '../services/auth'
-import { VerifyMail, ActivateAccount } from './verifications'
-import { AccountInfoBlock,StatusBlock, PartnersBlock, TutorialsBlock, GetOurCardBlock, ForCardsOwnerBlock , EmailInvite, SocialInvites } from './infoBlocks'
-import { Link } from 'react-router-dom'
-import SideMenu from './sideMenu';
+import { VerifyMail, ActivateAccount, OficialData } from './verifications'
 import AccountInfo from './pages/accountInfo';
-
 export default class myDashboard extends Component {
   state={
     user:{},
-    active:{},
     name:{},
-    emailVerificated:{}
+    emailVerificated:{},
+    oficial:{},
+    card:{},
 }
-
   componentWillMount(){
     let local = JSON.parse(localStorage.getItem('loggedUser'))
-    this.setState({user:local,active:local.costumer.status.active,emailVerificated:local.emailVerificated,name:local.name})
+    this.setState({user:local,
+      emailVerificated:local.emailVerificated,name:local.name})
 
     getProfile()
     .then(user=>{
-        this.setState({user})
+      this.setState({user,
+        emailVerificated:user.emailVerificated,
+        oficial:user.personalData.phone.number,
+        card:user.card.name,
+        name:user.name})
     }).catch(error=>{
         console.log(error)
     })
 }
+
+
   render() {
     return (
      
        <div>
       <section className="messages-display">
-      {this.state.emailVerificated ? null:<Link to="/newmailcode"><VerifyMail/></Link>}
-      {this.state.active===false && this.state.emailVerificated===false ? null:<Link to="/credits"><ActivateAccount/></Link>}
+      {this.state.emailVerificated ? null:<VerifyMail/>}
+      {this.state.oficial ? null:<OficialData/>}
+      {this.state.card ? null: <ActivateAccount/>}
+      {/* {this.state.active===false && this.state.emailVerificated===false ? null:<Link to="/deposit"><ActivateAccount/></Link>} */}
       </section>
-      <p>Bienvenido a tu cuenta {this.state.name}</p>
-      <AccountInfo/>
+      <h2>Bienvenido a tu cuenta {this.state.name}</h2>
+      {this.state.emailVerificated && this.state.oficial && this.state.card ? <AccountInfo/>:null}
       {/* <SideMenu/>
       <section>
         <section className="messages-display">

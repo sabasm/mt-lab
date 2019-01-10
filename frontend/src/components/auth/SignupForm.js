@@ -3,7 +3,8 @@ import {signup} from '../services/auth'
 import {Redirect} from 'react-router-dom'
 import {API_lookFor} from '../services/database'
 import { Link } from 'react-router-dom'
-import { Button } from 'antd'
+import { Button, Input,Icon,Card } from 'antd'
+const { Meta } = Card;
 
 
 class SignupForm extends Component {
@@ -146,46 +147,41 @@ class SignupForm extends Component {
     render() {
 
         return ( 
-        <div className = "all-forms "> {this.renderRedirect()} 
-        <label> Registro:
-            <hr/>
+            <div>{this.renderRedirect()}
+            <Card style={{ width: 250, marginTop: 16 }} >
+              <Meta
+                title="¡Regístrate!"
+                // description="LogIn card for PitayaLabs Microcréditos"
+            /><hr/>
+              <label>
             <form method = "POST"
             onSubmit = {this.checker} >
             <label>
-            Usuario: < br/>
-            <input type = "text"
-            name = "username"
-            onChange = {this.handleText} required/> 
+            <Input size="small" placeholder="Usuario" prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} type="text" name="username" onChange={this.handleText} required/> 
             { this.state.errorsPicker.user1 ? <small className="form-errors"><br/>Excelente nombre, pero ya está en uso, ¡elige uno mejor!</small>: null }
             { this.state.errorsPicker.user2 ? <small className="form-errors"><br/>Tu usuario debe ser mayor de 6 caracteres y menor de 12 caracteres</small>: 
             <small className="form-info"><br/>Tu usuario debe ser mayor de 6 caracteres y menor de 12 caracteres</small> }
-            </label><br/> < br/>
+            </label><br/><br/>
             <label>
-            Nombre completo: < br />
-            <input type = "text"
-            name = "name"
-            onChange = {this.handleText} required/> 
+            <Input size="small" placeholder="Nombre completo" type="text" name="name" onChange={this.handleText} required/> 
             { this.state.errorsPicker.name ? <small className="form-errors"><br/>Ingresa tu nombre completo</small>:null}
             </label><br/> < br />
             <label>
-            Email: < br/>
-            <input type = "email"
-            name = "email"
-            onChange = {this.handleText} required/> 
-
+            <Input size="small" placeholder="ingresa.tu@correo.com" type="email" name="email" onChange={this.handleText} required/> 
             { this.state.errorsPicker.email1 ? <small className="form-errors"><br/>Este correo ya está en uso, si olvidaste tu contraseña da click <Link to="/">aquí</Link>.</small>: null }
             { this.state.errorsPicker.email2 ? <small className="form-errors"><br/>Ingresa un email válido</small>: null }
             </label><br/> < br />
 
 
             <label>
-            Contraseña: < br />
-            <input type = "password" name = "password" onChange = {this.handleText} required/> 
+            <Input size="small" placeholder="*******" type="password" name="password" onChange={this.handleText} required/> 
             {this.state.errorsPicker.password ? <small className="form-errors"><br/>Tu contraseña debe ser mayor de 5 caracteres y contener por lo menos un número, una mayúscula y una minúscula</small>: 
             <small className="form-info"><br/>Tu contraseña debe ser mayor de 5 caracteres y contener por lo menos un número, una mayúscula y una minúscula</small> }
             </label><br/ > < br />
             <Button key="submit" htmlType="submit" type="submit" loading={this.state.loading}>Regístrate</Button>
-            </form> </label> </div>
+            </form> </label> 
+            </Card>
+    </div>
         )
     }
 }

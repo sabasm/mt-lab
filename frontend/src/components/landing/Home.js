@@ -82,6 +82,7 @@ login=(e)=>{
     return (
 
       <div className="component-container-video">
+        
           <div className="landing-front">
           <BackgroundVideo/>
           <section className="landing-title">
@@ -89,7 +90,7 @@ login=(e)=>{
           <img id="landing-logo" src="https://image.flaticon.com/icons/svg/1155/1155253.svg" alt="confiadoz-logo"/>
           
           <Card id="landing-calculator">
-          <h1>PitayaLabs Microcréditos</h1>
+          <h1>Confiadoz</h1>
             <h3>¡Si tienes amigos, tienes dinero!</h3>
             <Meta title="¡Calcula el préstamo que necesitas!" description="Arrastra los controles"/><br/>
             <label>
@@ -112,6 +113,7 @@ login=(e)=>{
           </label>
         { this.state.sliderMove ? <div><p>Mensualidades de ${totalMensual}MXN</p><p>Tu pago total sería de <b>${total}MXN</b></p></div>:<div><p>Tu límite aumenta con tus amigos</p><p>Sorpréndete</p></div>}
             
+          <h2><i>by PitayaLabs</i></h2>
 
             </Card>
 
@@ -162,6 +164,7 @@ login=(e)=>{
             </div>
         </div>
         {/* END OF LANDING INFO */}
+        <small>by PitayaLabs</small>
       </div>
       
     )

@@ -1,8 +1,6 @@
 import axios from 'axios'
 
-    const host='http://localhost:3000/auth'
-
-//production host = 'https://teamus-sabasmendivil.firebaseapp.com/auth
+    const host='https://mt-lab-backend.herokuapp.com/auth'
 
 //signup
 export const signup = (user) => {

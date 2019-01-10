@@ -71,7 +71,6 @@ class LoginForm extends Component {
     e.preventDefault()
     let check=0;
     const {user} = this.state
-    console.log(user)
 //CHECKS EN BASE DE DATOS
     //...CHECK 1
     //buscar usuario repetido
@@ -97,7 +96,6 @@ class LoginForm extends Component {
         this.state.errorsPicker.user2=false
         check++
     }
-  console.log(user)
 
     Promise.all([busqueda1])
     .then(()=>{

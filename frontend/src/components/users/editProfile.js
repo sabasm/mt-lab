@@ -1,41 +1,45 @@
 import React from 'react'
-import { Button } from 'antd'
+import { Button,Input,Card } from 'antd'
+const { Meta } = Card;
+
 const EditProfile = ({updateProfile, handleText}) => {
   return (
-    <div className="all-forms">
-      <label>Editar perfil:
-          <small className="form-info">
-          <br/> Es muy importante que incluyas toda tu información exacta ya que será utilizada para corroborar tus documentos oficiales</small>
-          <hr/>
+    <div>
+            <Card style={{ width: 250, marginTop: 16 }} >
+              <Meta
+                title="Edita tu perfil"
+                description="Es muy importante que ingreses todos tus datos oficiales, ya que serán corroborados para dar acceso a tus prestamos"
+            /><hr/>
+      <label>
       <form method="POST" onSubmit={updateProfile}>
       <label>
             C.U.R.P.:<br/>
-            <input type="text" name="curp" onChange={handleText} required/>
+            <Input type="text" name="curp" placeholder="C.U.R.P." onChange={handleText} size="small"  required/> 
         </label><br/><br/>
         <label>
             Nombre completo:<br/>
-            <small className="form-info"><br/>Tal cual aparece en tu credencial de elector, C.U.R.P o acta de nacimiento</small>
-            <input type="text" name="name" onChange={handleText} required/>
+            <Input type="text" name="name" placeholder="Nombre oficial completo" onChange={handleText} size="small"  required/> 
         </label><br/><br/>
         <label>
             Teléfono móvil:<br/>
-            <input type="text" name="phone" onChange={handleText} required/>
+            <Input type="number" name="phone" placeholder="Nombre oficial completo" onChange={handleText} size="small"  required/> 
         </label><br/><br/>
         <label>
             Estado:<br/>
-            <input type="text" name="state" onChange={handleText} required/>
+            <Input type="text" name="state" placeholder="Entidad Federativa" onChange={handleText} size="small"  required/> 
         </label><br/><br/>
         <label>
             Ciudad:<br/>
-            <input type="text" name="city" onChange={handleText} required/>
+            <Input type="text" name="city" placeholder="Ciudad" onChange={handleText} size="small"  required/> 
         </label><br/><br/>
         <label>
             Fecha de nacimiento:<br/>
-            <input type="date" name="birthday" onChange={handleText} required/>
+            <Input type="date" name="birthday" placeholder="Fecha de nacimiento" onChange={handleText} size="small"  required/> 
         </label><br/><br/>
         <Button key="submit" htmlType="submit" type="submit" >Guardar</Button>
       </form>
       </label>
+      </Card>
     </div>
   )
 }

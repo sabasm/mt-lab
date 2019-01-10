@@ -59,6 +59,7 @@
   align-content: center;
   box-sizing: content-box;
   padding-top: 4rem;
+  /* background-color: bisque; */
 }
 
 .landing-info-invest {
@@ -80,7 +81,7 @@
   justify-content: space-around;
   flex-flow: row wrap;
   width: 100vw;
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 7rem);
    }
 
    .landing-front-video{
@@ -91,8 +92,12 @@ background: linear-gradient(to right, rgba(181,189,200,0) 0%,rgba(130,140,149,0.
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b5bdc8', endColorstr='#8028343b',GradientType=1 ); /* IE6-9 */
 
    }
-
-
+.demo{
+  padding-top: 6rem;
+}
+.account-master{
+  padding:30px 0;
+}
 #año-mes input {
   width: 3rem;
 }
@@ -179,7 +184,13 @@ video#background-video {
   z-index: 1;
   transform: translateY(4vh);
 }
-
+#landing-calculator h1{
+  font-size:3rem;
+}
+#landing-calculator h2{
+  font-size:1rem;
+  color:gray;
+}
 #landing-calculator{
   width: auto;
   padding-top: 2vh;
@@ -206,5 +217,22 @@ video#background-video {
   #menu-icon{
     width: 100%;
     height: 100%;
+    font-size:1.6rem;
   }
+  .account-master{
+    padding-top: 2vh;
+  }
+}
+
+@media(max-width:555px){
+
+  .landing-front {
+    height: auto;
+    padding: 20px 0;
+  }
+    video#background-video {
+   
+      height: 180vh;
+   
+    }
 }

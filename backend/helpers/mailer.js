@@ -8,7 +8,7 @@ const transport = nodemailer.createTransport({
     
   }
 })
-
+//FRONT
 module.exports.welcomeMail = function (email, name,code){
   console.log("este email llegó al mailer ",email)
   transport.sendMail({
@@ -17,7 +17,7 @@ module.exports.welcomeMail = function (email, name,code){
     to:email,
     html:`
     <h1>Bienvenido ${name}!</h1>
-    <a href="http://localhost:3001/verify/${code}"> Activa tu cuenta aquí </a>
+    <a href="https://mt-lab-backend.herokuapp.com/verify/${code}"> Activa tu cuenta aquí </a> 
     <p>Estamos felices de tenerte!</p>
     `
 
@@ -42,7 +42,7 @@ module.exports.resetAccess = function (email, name,code){
     to:email,
     html:`
     <h1>Hola ${name}!</h1>
-    <a href="http://localhost:3001/resetaccess/${code}"> reestablece tus datos de accesso aquí </a>
+    <a href="https://mt-lab-backend.herokuapp.com/resetaccess/${code}"> reestablece tus datos de accesso aquí </a>
     <p>p.s. si no solicitaste reestablecer tu acceso, te recomendamos cambiar tu contraseña y no preocuparte por nada más ;)</p>
     <p>¡Esperamos estés teniendo un excelente día!<p/>
     `

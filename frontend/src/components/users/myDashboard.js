@@ -6,19 +6,17 @@ export default class myDashboard extends Component {
   state={
     user:{},
     name:{},
-    emailVerificated:{},
+    emailVerificated:true,
     oficial:{},
     card:{},
 }
   componentWillMount(){
     let local = JSON.parse(localStorage.getItem('loggedUser'))
-    this.setState({user:local,
-      emailVerificated:local.emailVerificated,name:local.name})
+    this.setState({user:local,name:local.name})
 
     getProfile()
     .then(user=>{
       this.setState({user,
-        emailVerificated:user.emailVerificated,
         oficial:user.personalData.phone.number,
         card:user.card.name,
         name:user.name})

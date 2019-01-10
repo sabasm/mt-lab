@@ -23,8 +23,8 @@ const Routes = () => (
     <Route exact path="/profile/edit" component={Profile}/>
     <Route exact path="/profile" component={Profile}/>
     <Route exact path="/resetaccess" component={ResetAccess}/>
-    <Route path="/resetaccess/aSDAha4jfasddda" component={resetAccess}/>
-    <Route path="/verify/aSDAha4jfasddda" component={verify}/>
+    <Route exact path="/resetaccess/aSDAha4jfasddda" component={resetAccess}/>
+    <Route exact path="/verify/aSDAha4jfasddda" component={verify}/>
   </Switch>
 )
 

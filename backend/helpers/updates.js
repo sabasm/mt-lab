@@ -41,13 +41,7 @@ router.get('/verify/aSDAha4jfasddda', (req, res, next) => {
 });
 
 router.post('/changes', (req, res, next) => {
-  console.log("ESTO LLEGA AL BACKEND DEL BODY", req.body)
   let updates = req.body.updates
-  console.log(req.body)
-  console.log("estos son los updates updates",updates," debe ser un objeto")
-
-  console.log("esto es el change al find and update", ({_id:req.body.id,...updates}))
-
   User.findOneAndUpdate({_id:req.body.id},{...updates})
     .then(r => {res.status(200).json({r})})
     .catch(e=>console.log(e))

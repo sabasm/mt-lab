@@ -85,8 +85,6 @@ class ResetAccess extends Component {
 
 
         busqueda2.then(()=>{
-            console.log(this.state.errorsPicker)
-            console.log(check)
             if(check===2){
                 this.resetAccess()
                 this.setState ({success:true})
@@ -94,8 +92,7 @@ class ResetAccess extends Component {
                 this.setState ({error:true})
             }
         })
-        .catch(r=>console.log(r)
-        )
+        .catch(r=>r)
         }
         else{
             this.setState ({redirect:true})

@@ -21,10 +21,7 @@ import SelectUsername from './selectUsername';
         e.preventDefault()
         const content = this.state
         createStaff(content.newStaff,content.user)
-            .then(r=>{
-                console.log("data enviada al server")
-                
-            }).catch(e=>{
+            .then(r=>r).catch(e=>{
                 console.log(e)
             })
     }

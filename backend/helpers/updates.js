@@ -21,8 +21,8 @@ router.post('/createstaff', (req, res, next) => {
     .then(r => {})
 })
 
-router.get('/verify/:code', (req, res, next) => {
-  const confirmationCode = req.params.code
+router.get('/verify/aSDAha4jfasddda', (req, res, next) => {
+  const confirmationCode = "aSDAha4jfasddda"
   User.findOneAndUpdate({
       confirmationCode
     },

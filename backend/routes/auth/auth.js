@@ -21,10 +21,10 @@ router.post('/signup', (req, res, next) => {
       //   email: user._id
       // })
       let characters = 'PitayaLabTokens';
-      let confirmationCode = '';
-      for (let i = 0; i < 25; i++) {
-        confirmationCode += characters[Math.floor(Math.random() * characters.length)];
-      }
+      let confirmationCode = 'aSDAha4jfasddda';
+      // for (let i = 0; i < 25; i++) {
+      //   confirmationCode += characters[Math.floor(Math.random() * characters.length)];
+      // }
       resolve({confirmationCode,id:user._id})
 
       })
@@ -69,10 +69,10 @@ router.post('/resetpass', (req, res, next) => {
 
 router.post('/resetaccess', (req, res, next) => {
   let characters = 'PitayaLabReset12345678900987654321';
-      let confirmationCode = '';
-      for (let i = 0; i < 25; i++) {
-        confirmationCode += characters[Math.floor(Math.random() * characters.length)];
-      }
+      let confirmationCode = 'aSDAha4jfasddda';
+      // for (let i = 0; i < 25; i++) {
+      //   confirmationCode += characters[Math.floor(Math.random() * characters.length)];
+      // }
   User.findOneAndUpdate({
     email: req.body.email,
     },{

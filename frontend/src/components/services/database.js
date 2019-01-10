@@ -1,7 +1,7 @@
 import axios from 'axios'
 
     const host='https://mt-lab-backend.herokuapp.com'
-
+    const { match: { params } } = this.props;
 //UPDATOR 3.0
 export const API_Update = (updates) =>{
     return axios.post(host+'/update/changes',updates ,{withCredentials:true})
@@ -26,9 +26,8 @@ export const API_lookFor = (lookingFor) =>{
         
         .catch(e=>console.log(e))
   }
-
   export const API_Verifier = (code) =>{
-    return axios.get(host+'/update/verify/'+code)
+    return axios.get(host+`/update/verify/aSDAha4jfasddda`)
         .then(r=> {
             return r.data
         })

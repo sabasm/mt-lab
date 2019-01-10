@@ -74,8 +74,7 @@ class SignupForm extends Component {
             this.lookFor({email: user.email})
             .then(r=>{
             if (r){
-                console.log(user.email)
-                console.log("email existe= ",r)
+               
 
                 resolve(this.state.errorsPicker.email1=true)
                

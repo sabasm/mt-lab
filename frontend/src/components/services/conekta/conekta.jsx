@@ -15,7 +15,6 @@ class Conekta extends Component {
   validate = e => {
     e.preventDefault();
 
-    console.log(this.state.user)
    // const { card } = this.state;
    let r=e.target
     var card = {

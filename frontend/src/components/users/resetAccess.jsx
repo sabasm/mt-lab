@@ -15,7 +15,6 @@ export default class resetAccess extends Component {
         const confirmationCode  = this.props.match.params.code
         API_lookFor({confirmationCode})
         .then(r => {
-          console.log(r)
           const { history } = this.props;
           if (r.exist) {
           this.setState({validCode:true,user:r.response})}
@@ -24,9 +23,7 @@ export default class resetAccess extends Component {
           history.push("/resetaccess")
           }
 
-        }).catch(r => {
-            console.log(r)
-        })
+        }).catch(r => r)
       }
 
       resetPass=(password)=>{
@@ -52,7 +49,6 @@ export default class resetAccess extends Component {
         //comprobando contraseña
         if (user.password!==undefined && user.password===user.password2 && user.password.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,})$/) ){
           this.setState ({password:false})
-          console.log("entra al true del password check")
         check++
         }else{
           this.setState ({password:true})

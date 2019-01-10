@@ -1,7 +1,7 @@
 import axios from 'axios'
 
     const host='https://mt-lab-backend.herokuapp.com/auth'
-
+   // const { match: { params } } = this.props;${params.code}`
 //signup
 export const signup = (user) => {
     return axios.post(host+'/signup', user)
@@ -54,7 +54,7 @@ export const getProfile = () =>{
 //update profile edit
 export const update = (user) =>{
     return axios.post(host+'/profile/edit',user,{withCredentials:true})
-        .then(r=>console.log("esta es la respuesta del update profile en el front= ",r))
+        .then(r=>r)
         .catch(e=>e.response)
 }
 //staff login

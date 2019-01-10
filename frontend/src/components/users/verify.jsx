@@ -10,10 +10,7 @@ export default class verify extends Component {
         const { code } = this.props.match.params
         API_Verifier(code)
         .then(r => {
-        }).catch(r => {
-            console.log(r)
-
-        })
+        }).catch(r => r)
       }
 
   render() {

@@ -103,7 +103,7 @@ class LoginForm extends Component {
             this.login() 
             this.enterLoading()}else{this.setState ({error:true})}
     })
-    .catch(r=>console.log("no entra al then pero si al catch del promise all"))
+    .catch(r=>r)
 }
     
 
